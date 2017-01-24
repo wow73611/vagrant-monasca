@@ -12,6 +12,9 @@ metricsTopic: metrics
 # Topic for publishing domain events to
 eventsTopic: events
 
+validNotificationPeriods:
+  - 60
+
 kafka:
   brokerUris:
 {% for host in kafka_hosts.split(',') %}

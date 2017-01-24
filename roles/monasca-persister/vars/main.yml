@@ -1,0 +1,11 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+monasca_conf_dir: /etc/monasca
+persister_java_conf_file: "{{ monasca_conf_dir }}/persister-config.yml"
+persister_python_conf_file: "{{ monasca_conf_dir }}/persister.conf"
+persister_log_dir: "{{ monasca_log_dir }}/persister"
+persister_systemd_service: /etc/systemd/system/monasca-persister.service
+persister_upstart_conf: /etc/init/monasca-persister.conf
+persister_user: mon-persister
+monasca_group: monasca

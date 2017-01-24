@@ -1,0 +1,17 @@
+[Configuration]
+default_base = /home/dbadmin
+install_opts = -Y -T -s {{vertica_ips}} {% if vertica_package_location is defined %}-r {{vertica_package_location}} {% endif %}-d /var/vertica/data
+show_hostnames = False
+format = 3
+last_port = 5433
+controlsubnet = default
+controlmode = pt2pt
+
+[Cluster]
+hosts = {{vertica_ips}}
+spread_hosts =
+
+[Nodes]
+{% for url in vertica_ips.split(',') %}
+node000{{loop.index0}}={{url}},{{vertica_catalog_dir}},{{vertica_data_dir}}
+{% endfor %}

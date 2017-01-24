@@ -1,0 +1,23 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: create conf_file from template
+  template: dest={{persister_python_conf_file}} owner={{persister_user}} group={{monasca_group}} mode=640 src=persister.conf.j2
+  notify:
+    - restart monasca-persister
+
+- name: create upstart script from template
+  template: dest={{persister_upstart_conf}} owner=root group=root mode=644 src=monasca-persister-python.conf.j2
+  notify:
+    - restart monasca-persister
+  when: not use_systemd
+
+- name: create systemd config from template
+  template: dest={{persister_systemd_service}} owner=root group=root mode=644 src=monasca-persister-python.service.j2
+  notify:
+    - restart monasca-persister
+  when: use_systemd
+
+- command: systemctl daemon-reload
+  when: use_systemd
+

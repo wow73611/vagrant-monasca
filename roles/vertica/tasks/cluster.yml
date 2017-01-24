@@ -1,0 +1,30 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: Set Vertica IPs for cluster deployment
+  set_fact: vertica_ips={{vertica_cluster}}
+  when: vertica_cluster is defined
+
+- name: Check status of admintools config file
+  stat: path={{vertica_config_dir}}/admintools.conf
+  register: admin_tools_status
+
+- name: Create admintools config file
+  template: src=admintools.conf.j2 dest={{vertica_config_dir}}/admintools.conf owner="{{vertica_dbadmin_user}}" group="{{vertica_dbadmin_group}}" mode=0660
+  when: not admin_tools_status.stat.exists
+
+- name: Build hosts file if inventory entry is defined with hostname
+  lineinfile: dest=/etc/hosts regexp='.*{{ item }}$' line="{{ hostvars[item].ansible_default_ipv4.address }} {{item}}" state=present
+  when: vertica_cluster is defined and vertica_group is defined and hostvars[item].ansible_default_ipv4.address is defined
+  with_items: vertica_group
+
+- name: Build hosts file if inventory entry is defined with ip
+  lineinfile: dest=/etc/hosts regexp='.*{{ item }}$' line="{{item}} {{ hostvars[item].ansible_fqdn }}" state=present
+  when: vertica_cluster is defined and vertica_group is defined and hostvars[item].ansible_default_ipv4.address is not defined
+  with_items: vertica_group
+
+- name: Create the vertica_script_location
+  file: path={{vertica_script_location}} state=directory owner=root group=root mode=0755
+
+- name: Create recovery script
+  template: src=vertica_recovery.j2 dest={{vertica_script_location}}/vertica_recovery mode=0740

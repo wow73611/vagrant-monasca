@@ -1,0 +1,11 @@
+# Startup script for the mon-persister
+
+description "Monasca Persister"
+start on runlevel [2345]
+
+console log
+respawn
+
+setgid {{ monasca_group }}
+setuid {{ persister_user }}
+exec {{monasca_virtualenv_dir}}/bin/monasca-persister --config-file {{ persister_python_conf_file }}

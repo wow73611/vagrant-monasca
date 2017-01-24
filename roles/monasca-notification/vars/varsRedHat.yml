@@ -1,0 +1,11 @@
+---
+dependencies:
+  - python-devel
+  - gcc
+  - gcc-c++
+  - make
+  - openssl-devel
+  - libxml2
+  - libxml2-devel
+  - libxslt
+  - libxslt-devel

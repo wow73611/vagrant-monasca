@@ -1,0 +1,4 @@
+---
+# The version to download will be appened to this.
+github_tarball_url: https://api.github.com/repos/hpcloud-mon/grafana/tarball
+apache_document_root: /var/www/html/

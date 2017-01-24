@@ -1,0 +1,4 @@
+---
+
+- name: pip install monasca-events-api
+  pip: name=monasca-events-api state=latest extra_args="--pre"

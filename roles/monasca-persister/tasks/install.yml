@@ -1,0 +1,8 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- include: java_install.yml
+  when: monasca_persister_java
+
+- include: python_install.yml
+  when: not monasca_persister_java

@@ -1,0 +1,13 @@
+---
+# Copyright 2015 FUJITSU LIMITED
+
+- name: Install deps to avoid pip doing compilation or enable it
+  yum: name={{item}} state=present
+  with_items:
+    - "{{ dependencies }}"
+
+- name: Virtualenv from pypi
+  pip: name=virtualenv  version=13.1.2 extra_args='--upgrade' state=present
+
+- name: Setuptools from pypi
+  pip: name=setuptools extra_args='--upgrade' state=present virtualenv="{{ monasca_virtualenv_dir }}"

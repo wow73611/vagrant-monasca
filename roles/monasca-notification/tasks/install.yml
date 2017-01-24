@@ -1,0 +1,59 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: Include system dependencies
+  include_vars: "vars{{ ansible_os_family }}.yml"
+
+- name: Include DB dependencies
+  include_vars: "{{ ansible_os_family|lower }}_{{ database_backend }}.yml"
+  when: database_support
+
+- name: Install deps to avoid pip doing compilation
+  yum: name={{item}} state=present
+  with_items: dependencies
+  when: not skip_install and ansible_os_family == "RedHat"
+
+- name: Install deps to avoid pip doing compilation
+  apt: name={{item}} state=present
+  with_items: dependencies
+  when: not skip_install and ansible_os_family == "Debian"
+
+- name: Install DB dependencies (RedHat)
+  yum: name={{item}} state=present
+  with_items: database_dependencies
+  when: not skip_install and ansible_os_family == "RedHat" and (install_yum_postgres_lib is defined and install_yum_postgres_lib)
+
+- name: Install DB dependencies (Debian)
+  apt: name={{item}} state=present update_cache=yes
+  with_items: database_dependencies
+  when: not skip_install and ansible_os_family == "Debian"
+
+- include: pip_index.yml
+  when: not skip_install
+
+- name: pip install virtualenv
+  pip: name=virtualenv version=13.1.2
+  when: not skip_install
+
+- name: pip install pymysql
+  pip: name=pymysql state=latest virtualenv="{{monasca_virtualenv_dir}}" virtualenv_site_packages=yes
+  when: not skip_install
+
+- name: pip install monasca-notification
+  pip: name="{{ monasca_notification_name }}" extra_args="--pre" state=latest virtualenv="{{monasca_virtualenv_dir}}" virtualenv_site_packages=yes
+  notify:
+    - restart monasca-notification
+  when: not skip_install
+
+- name: Install SQLAlchmy for postgresql
+  pip: name=sqlalchemy state=latest virtualenv="{{ monasca_virtualenv_dir }}"
+  notify:
+    - restart monasca-notification
+  when: database_backend == 'postgresql'
+
+- include: pip_index.yml
+
+- name: pip install monasca-notification
+  pip: name=monasca-notification state=latest virtualenv="{{monasca_virtualenv_dir}}"
+  notify:
+    - restart monasca-notification

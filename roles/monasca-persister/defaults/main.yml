@@ -1,0 +1,20 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+database_type: influxdb
+influxdb_db: mon
+monasca_conf_dir: /etc/monasca
+monasca_log_dir: /var/log/monasca
+monasca_log_level: WARN
+monasca_jar_dir: /opt/monasca
+monasca_persister_java: True
+monasca_persister_java_opts: -Xmx1g
+persister_version: 1.1.0-SNAPSHOT
+persister_tarball_base_url: http://tarballs.openstack.org/ci/monasca-persister
+persister_admin_connector_port: 8091
+persister_app_connector_port: 8090
+run_mode: Deploy
+skip_install: False
+monasca_persister_version: 0.1.12
+monasca_virtualenv_dir: /opt/monasca
+

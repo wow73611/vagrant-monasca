@@ -1,0 +1,9 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+monasca_api_user: mon-api
+monasca_conf_dir: /etc/monasca
+monasca_group: monasca
+api_log_dir: "{{ monasca_log_dir }}/api"
+api_conf_file: "{{ monasca_conf_dir }}/api-config.yml"
+api_systemd_service: /etc/systemd/system/monasca-api.service

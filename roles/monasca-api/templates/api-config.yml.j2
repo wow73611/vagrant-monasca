@@ -1,0 +1,185 @@
+# The region for which all metrics passing through this server will be persisted
+region: "{{api_region}}"
+
+maxQueryLimit: 10000
+
+# Whether this server is running on a secure port
+accessedViaHttps: false
+
+# Topic for publishing metrics to
+metricsTopic: metrics
+
+# Topic for publishing domain events to
+eventsTopic: events
+
+kafka:
+  brokerUris:
+{% for host in kafka_hosts.split(',') %}
+    - "{{host}}"
+{% endfor %}
+  zookeeperUris:
+{% for host in zookeeper_hosts.split(',') %}
+    - "{{host}}"
+{% endfor %}
+  healthCheckTopic: healthcheck
+
+mysql:
+  driverClass: com.mysql.jdbc.Driver
+  url: jdbc:mysql://{{database_host}}:3306/{{database_name}}?connectTimeout=5000&autoReconnect=true&useSSL=true&useLegacyDatetimeCode=false
+  user: {{database_user}}
+  password: {{database_password}}
+  maxWaitForConnection: 1s
+  validationQuery: "/* MyService Health Check */ SELECT 1"
+  minSize: 8
+  maxSize: 32
+  checkConnectionWhileIdle: false
+  checkConnectionOnBorrow: true
+
+hibernate:
+  supportEnabled: {{hibernate_support_enabled}}
+  providerClass: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+  dataSourceClassName: {{driver_class}}
+  serverName: {{database_host}}
+  portNumber: {{database_port}}
+  databaseName: {{database_name}}
+  user: {{database_user}}
+  password: {{database_password}}
+  initialConnections: 25
+  maxConnections: 100
+  autoConfig: validate
+
+databaseConfiguration:
+  databaseType: "{{ database_type }}"
+
+# Uncomment if databaseType is influxDB
+influxDB:
+  # Retention policy may be left blank to indicate default policy.
+  retentionPolicy:
+  maxHttpConnections: 100
+  gzip: true
+  name: "{{influxdb_db}}"
+  url: "{{influxdb_url}}"
+  user: "{{influxdb_user}}"
+  password: "{{influxdb_password}}"
+
+{% set vertica_api_user = [] %}
+{% if vertica_users is defined %}
+{% for item in vertica_users %}
+{% if item.role == 'monasca_api'%}
+{% if vertica_api_user.append(item) %}{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+# Uncomment if databaseType is vertica
+# As of 7/10 there is a bug in the monasca-api that requires this section even if databaseType is set to influxdb
+vertica:
+  driverClass: com.vertica.jdbc.Driver
+  url: "{{ vertica_url | default('jdbc:vertica://localhost:5433/mon')}}"
+{% if vertica_api_user|count == 0%}
+  user: mon_api
+  password: password
+{% else %}
+  user: "{{ vertica_api_user[0].username }}"
+  password: "{{ vertica_api_user[0].password }}"
+{% endif %}
+  maxWaitForConnection: 1s
+  validationQuery: "/* MyService Health Check */ SELECT 1"
+  minSize: 4
+  maxSize: 32
+  checkConnectionWhileIdle: true
+
+middleware:
+  enabled: true
+  serverVIP: "{{keystone_host}}"
+  serverPort: {{keystone_port}}
+  useHttps: {{keystone_use_https}}
+  truststore: "{{monasca_api_truststore}}"
+  truststorePassword: "{{monasca_api_truststore_password}}"
+  connTimeout: 500
+  connSSLClientAuth: {{keystone_client_auth}}
+  keystore: "{{monasca_api_client_keystore}}"
+  keystorePassword: "{{monasca_api_client_keystore_password}}"
+  connPoolMaxActive: 3
+  connPoolMaxIdle: 3
+  connPoolEvictPeriod: 600000
+  connPoolMinIdleTime: 600000
+  connRetryTimes: 2
+  connRetryInterval: 50
+  defaultAuthorizedRoles: {{ defaultAuthorizedRoles }}
+  agentAuthorizedRoles: {{ agentAuthorizedRoles }}
+  adminAuthMethod: {{keystone_auth_method}}
+  adminUser: "{{keystone_admin}}"
+  adminPassword: "{{keystone_admin_password}}"
+  adminProjectId:
+{% if keystone_admin_project is defined %}
+  adminProjectName: "{{keystone_admin_project}}"
+{% else %}
+  adminProjectName:
+{% endif %}
+  adminToken: "{{keystone_admin_token}}"
+  timeToCacheToken: 600
+  maxTokenCacheSize: 1048576
+
+server:
+  applicationConnectors:
+{% if monasca_api_keystore is defined %}
+    - type: https
+      keyStorePath: "{{ monasca_api_keystore }}"
+      keyStorePassword: "{{ monasca_api_keystore_password }}"
+      validateCerts: false
+{% else %}
+    - type: http
+{% endif %}
+{% if monasca_api_bind_host is defined %}
+      bindHost: "{{ monasca_api_bind_host }}"
+{% endif %}
+      port: {{ monasca_api_client_port }}
+      maxRequestHeaderSize: 16KiB  # Allow large headers used by keystone tokens
+  adminConnectors:
+    - type: http
+      port: {{ monasca_admin_client_port }}
+{% if monasca_api_admin_bind_host is defined %}
+      bindHost: "{{ monasca_api_admin_bind_host }}"
+{% endif %}
+  requestLog:
+   timeZone: UTC
+   appenders:
+    - type: file
+      currentLogFilename: "{{api_log_dir}}/request.log"
+      threshold: ALL
+      archive: true
+      archivedLogFilenamePattern: "{{api_log_dir}}/request-%d.log.gz"
+      archivedFileCount: 5
+{% if ansible_processor_vcpus > 32 %}
+# Dropwizard 0.7.0 includes a version of Jetty with admin thread issues on large machines, this works around it
+  adminMaxThreads: {{ ansible_processor_vcpus * 2 }}
+{% endif %}
+
+# Logging settings.
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: {{ monasca_log_level }}
+
+  # Logger-specific levels.
+  loggers:
+
+    # Sets the level for 'com.example.app' to DEBUG.
+    com.example.app: DEBUG
+
+  appenders:
+    - type: console
+      threshold: ALL
+      timeZone: UTC
+      target: stdout
+      logFormat: # TODO
+
+    - type: file
+      currentLogFilename: "{{api_log_dir}}/monasca-api.log"
+      threshold: ALL
+      archive: true
+      archivedLogFilenamePattern: "{{api_log_dir}}/monasca-api-%d.log.gz"
+      archivedFileCount: 5
+      timeZone: UTC
+      logFormat: # TODO

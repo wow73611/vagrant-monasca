@@ -1,0 +1,8 @@
+---
+
+- name: Start and enable monasca-events-api
+  service: name=monasca-events-api state=started enabled=yes
+
+- name: Wait for Events API port
+  wait_for: port={{ events_api_port }} host={{ events_api_node |  default('127.0.0.1') }} state=started timeout={{ monasca_wait_for_period }}
+  when: verify

@@ -1,0 +1,5 @@
+---
+# Copyright 2015 FUJITSU LIMITED
+
+dependencies:
+  - python-devel

@@ -1,0 +1,20 @@
+---
+
+log_debug: True
+
+events_api_node: 192.168.10.4
+events_api_port: 8072
+mysql_node: 192.168.10.4
+mysql_user: monapi
+mysql_pass: password
+kafka_node: 192.168.10.4:9092
+keystone_identity: http://192.168.10.5:35357
+keystone_auth: http://192.168.10.5:5000
+keystone_admin_user: admin
+keystone_admin_pass: admin
+keystone_admin_tenant: admin
+
+monasca_wait_for_period: 10
+verify: True
+run_mode: Deploy
+skip_install: False

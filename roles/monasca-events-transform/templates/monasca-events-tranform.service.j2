@@ -1,0 +1,13 @@
+[Unit]
+Description=Monasca Events Transform
+After=kafka.service postfix.service
+
+[Service]
+Type=simple
+User={{ events_user }}
+Group={{ events_group }}
+Restart=always
+ExecStart={{ monasca_virtualenv_dir }}/bin/events_transform
+
+[Install]
+WantedBy=multi-user.target

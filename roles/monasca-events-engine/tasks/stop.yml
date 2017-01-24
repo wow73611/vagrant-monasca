@@ -1,0 +1,4 @@
+---
+
+- name: Stop Monasca Events Engine
+  service: name=monasca-events-engine state=stopped

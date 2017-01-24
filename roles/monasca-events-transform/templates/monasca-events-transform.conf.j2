@@ -1,0 +1,14 @@
+# Startup script for the events_transform
+
+description "Monasca Events Transform daemon"
+start on runlevel [2345]
+
+console log
+respawn
+
+kill timeout 240
+respawn limit 25 5
+
+setgid {{ events_group }}
+setuid {{ events_user }}
+exec /usr/local/bin/events_transform

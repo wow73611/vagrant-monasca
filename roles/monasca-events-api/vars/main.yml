@@ -1,0 +1,13 @@
+---
+
+monasca_virtualenv_dir: /opt/monasca
+monasca_conf_dir: /etc/monasca
+events_conf_file: events_api.conf
+events_ini_file: events_api.ini
+monasca_log_dir: /var/log/monasca
+monasca_events_log_dir: "{{ monasca_log_dir }}/events"
+events_api_upstart_conf_file: monasca-events-api.conf
+events_api_service_file: events_api.service
+
+events_user: mon-events-api
+events_group: monasca

@@ -1,0 +1,6 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: restart monasca-thresh
+  service: name=monasca-thresh state=restarted enabled=yes
+  when: run_mode == 'Deploy'

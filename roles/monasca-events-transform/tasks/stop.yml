@@ -1,0 +1,4 @@
+---
+
+- name: Stop Monasca Events Transform
+  service: name=monasca-events-transform state=stopped

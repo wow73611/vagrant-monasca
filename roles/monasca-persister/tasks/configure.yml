@@ -1,0 +1,33 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: setup group
+  group: name={{monasca_group}} system=yes
+
+- name: Setup user
+  user: name={{persister_user}} system=yes group={{monasca_group}}
+
+- name: create monasca log directory
+  file: path={{monasca_log_dir}} state=directory owner=root group={{monasca_group}} mode=775
+
+- name: create persister log directory
+  file: path={{persister_log_dir}} state=directory owner=root group={{monasca_group}} mode=775
+
+- name: create conf_dir
+  file: path={{monasca_conf_dir}} state=directory owner=root group={{monasca_group}} mode=775
+
+- name: Detect if this is a systemd based system
+  command: cat /proc/1/comm
+  register: init
+- set_fact: use_systemd=True
+  when: init.stdout == 'systemd'
+- set_fact: use_systemd=False
+  when: init.stdout != 'systemd'
+
+- include: java_configure.yml
+  when: monasca_persister_java
+
+- include: python_configure.yml
+  when: not monasca_persister_java
+
+- meta: flush_handlers

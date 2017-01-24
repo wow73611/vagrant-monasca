@@ -1,0 +1,135 @@
+name: monasca-persister
+
+alarmHistoryConfiguration:
+  batchSize: 100
+  numThreads: 2
+  maxBatchTime: 15
+# See http://kafka.apache.org/documentation.html#api for semantics and defaults.
+  topic: alarm-state-transitions
+  groupId: 1_alarm-state-transitions
+  consumerId: "{{ ansible_fqdn }}"
+  clientId : 1
+
+metricConfiguration:
+  batchSize: 10000
+  numThreads: 4
+  maxBatchTime: 15
+# See http://kafka.apache.org/documentation.html#api for semantics and defaults.
+  topic: metrics
+  groupId: 1_metrics
+  consumerId: "{{ ansible_fqdn }}"
+  clientId : 1
+
+#Kafka settings.
+kafkaConfig:
+# See http://kafka.apache.org/documentation.html#api for semantics and defaults.
+  zookeeperConnect: "{{ zookeeper_hosts }}"
+  socketTimeoutMs: 30000
+  socketReceiveBufferBytes : 65536
+  fetchMessageMaxBytes: 1048576
+  queuedMaxMessageChunks: 10
+  rebalanceMaxRetries: 4
+  fetchMinBytes:  1
+  fetchWaitMaxMs:  100
+  rebalanceBackoffMs: 2000
+  refreshLeaderBackoffMs: 200
+  autoOffsetReset: largest
+  consumerTimeoutMs:  1000
+  zookeeperSessionTimeoutMs : 60000
+  zookeeperConnectionTimeoutMs : 60000
+  zookeeperSyncTimeMs: 2000
+
+verticaMetricRepoConfig:
+  maxCacheSize: 2000000
+
+databaseConfiguration:
+# vertica | influxdb
+  databaseType: {{ database_type }}
+
+# Uncomment if databaseType is influxdb
+influxDbConfiguration:
+  # Retention policy may be left blank to indicate default policy.
+  retentionPolicy:
+  maxHttpConnections: 100
+  gzip: true
+  name: "{{ influxdb_db }}"
+  url: "{{ influxdb_url }}"
+  user: "{{ influxdb_user }}"
+  password: "{{ influxdb_password }}"
+
+{% set vertica_persister_user = [] %}
+{% if vertica_users is defined %}
+{% for item in vertica_users %}
+{% if item.role == 'monasca_persister'%}
+{% if vertica_persister_user.append(item) %}{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+# Uncomment if databaseType is vertica
+dataSourceFactory:
+  driverClass: com.vertica.jdbc.Driver
+  url: "{{ vertica_url | default('jdbc:vertica://localhost:5433/mon') }}"
+{% if vertica_persister_user|count == 0%}
+  user: mon_persister
+  password: password
+{% else %}
+  user: "{{ vertica_persister_user[0].username }}"
+  password: "{{ vertica_persister_user[0].password }}"
+{% endif %}
+  properties:
+      ssl: false
+  # the maximum amount of time to wait on an empty pool before throwing an exception
+  maxWaitForConnection: 1s
+  # the SQL query to run when validating a connection's liveness
+  validationQuery: "/* MyService Health Check */ SELECT 1"
+  # the minimum number of connections to keep open
+  minSize: 8
+  # the maximum number of connections to keep open
+  maxSize: 41
+  # whether or not idle connections should be validated
+  checkConnectionWhileIdle: false
+  # the maximum lifetime of an idle connection
+  maxConnectionAge: 1 minute
+
+metrics:
+  frequency: 1 second
+
+
+# Logging settings.
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO,
+  # DEBUG, TRACE, or ALL.
+  level: {{ monasca_log_level }}
+
+  # Logger-specific levels.
+  loggers:
+
+    # Sets the level for 'com.example.app' to DEBUG.
+      com.example.app: DEBUG
+    # com.hpcloud: debug
+    # com.hpcloud.mon.persister.repository: DEBUG
+
+  appenders:
+
+    - type: file
+      threshold: INFO
+      archive: true
+      currentLogFilename: "{{ persister_log_dir }}/monasca-persister.log"
+      archivedLogFilenamePattern: "{{ persister_log_dir }}/monasca-persister.log-%d.log.gz"
+      archivedFileCount: 5
+      # The timezone used to format dates. HINT: USE THE DEFAULT, UTC.
+      timeZone: UTC
+
+server:
+  applicationConnectors:
+    - type: http
+      port: {{ persister_app_connector_port }}
+  adminConnectors:
+    - type: http
+      port: {{ persister_admin_connector_port }}
+{% if ansible_processor_vcpus > 32 %}
+# Dropwizard 0.7.0 includes a version of Jetty with admin thread issues on large machines, this works around it
+  adminMaxThreads: {{ ansible_processor_vcpus * 2 }}
+{% endif %}

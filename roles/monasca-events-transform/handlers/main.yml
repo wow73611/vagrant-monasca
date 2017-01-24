@@ -1,0 +1,5 @@
+---
+
+- name: restart monasca-events-transform
+  service: name=monasca-events-transform state=restarted
+  when: run_mode == 'Deploy'

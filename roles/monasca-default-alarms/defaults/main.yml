@@ -1,0 +1,7 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+notification_address: root@localhost
+notification_name: 'Default Email'
+notification_type: EMAIL
+keystone_project:

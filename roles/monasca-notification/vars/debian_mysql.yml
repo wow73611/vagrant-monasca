@@ -1,0 +1,4 @@
+---
+database_dependencies:
+  - python-mysqldb
+  - libmysqlclient-dev

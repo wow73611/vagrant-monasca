@@ -1,0 +1,40 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+influxdb_db: mon
+keystone_auth_method: password
+keystone_admin_token:
+keystone_port: 5000
+keystone_use_https: false
+keystone_client_auth: false
+monasca_admin_client_port: 8081
+monasca_api_client_port: 8070
+monasca_api_client_keystore:
+monasca_api_client_keystore_password:
+monasca_api_java_opts: -Xmx1g
+monasca_api_truststore:
+monasca_api_truststore_password:
+monasca_api_keystore_password:
+monasca_api_tarball_base_url: http://tarballs.openstack.org/ci/monasca-api
+monasca_api_version: 1.1.0-SNAPSHOT
+monasca_wait_for_period: 10
+monasca_log_dir: /var/log/monasca
+monasca_log_level: WARN
+monasca_jar_dir: /opt/monasca
+database_name: mon
+database_type: influxdb
+hibernate_support_enabled: "false"
+database_port: 3306
+database_host: 192.168.10.4
+database_user: monapi
+database_password: password
+driver_class: org.postgresql.ds.PGPoolingDataSource
+
+run_mode: Deploy
+skip_install: False
+verify: True
+
+defaultAuthorizedRoles: [user, domainuser, domainadmin, monasca-user]
+agentAuthorizedRoles: [monasca-agent]
+
+mon_api_wait_timeout: 60

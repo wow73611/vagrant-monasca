@@ -1,0 +1,15 @@
+[Unit]
+Description=Monasca Api
+Requires=network.target
+After=network.target kafka.service influxdb.service mysql.service
+
+[Service]
+Type=simple
+User={{ monasca_api_user }}
+Group={{ monasca_group }}
+LimitNOFILE=32768
+Restart=on-failure
+ExecStart=/usr/bin/java -Dfile.encoding=UTF-8 {{ monasca_api_java_opts }} -cp {{ monasca_jar_dir }}/monasca-api.jar:{{ monasca_jar_dir }}/vertica/vertica_jdbc.jar monasca.api.MonApiApplication server {{api_conf_file}}
+
+[Install]
+WantedBy=multi-user.target

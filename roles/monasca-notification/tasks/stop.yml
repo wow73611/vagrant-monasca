@@ -1,0 +1,5 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: Stop Monasca-notification
+  service: name=monasca-notification state=stopped

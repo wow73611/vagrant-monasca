@@ -1,0 +1,62 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: Create dbadmin group
+  group: name="{{vertica_dbadmin_group}}" state=present
+
+- name: Create dbadmin user
+  user: name="{{vertica_dbadmin_user}}" home="{{vertica_dbadmin_home}}" group="{{vertica_dbadmin_group}}" shell=/bin/bash
+
+- name: Create user directory under vertica for dbadmin
+  file: path=/opt/vertica/config/users/"{{vertica_dbadmin_user}}" owner="{{vertica_dbadmin_user}}" group=root mode=0775 state=directory
+
+- name: Create agent.conf
+  file: path=/opt/vertica/config/users/"{{vertica_dbadmin_user}}"/agent.conf owner=root group=root mode=0644 state=touch
+
+# It is important that the dbadmin users on each node in a cluster can have passwordless ssh access to the other machines
+# This is done with a shared private ssh key
+
+- name: Create ssh directory in vertica home directory
+  file: path="{{vertica_dbadmin_home}}"/.ssh owner="{{vertica_dbadmin_user}}" group="{{vertica_dbadmin_group}}" mode=0700 state=directory
+
+- name: Create config for ssh
+  copy: dest={{vertica_dbadmin_home}}/.ssh/config owner="{{vertica_dbadmin_user}}" group="{{vertica_dbadmin_group}}" mode=0600 content="StrictHostKeyChecking no"
+
+# Reads in the ssh keys from the first host as it will the use the same keys throughout the cluster
+- name: Set ssh variables from first host
+  set_fact: vertica_ssh_private_key="{{hostvars[vertica_group[0]].vertica_ssh_private_key}}"  vertica_ssh_public_key="{{hostvars[vertica_group[0]].vertica_ssh_public_key}}"
+  when: vertica_group is defined and  hostvars[vertica_group[0]].vertica_ssh_private_key is defined
+
+- name: Check status dbadmin ssh file
+  stat: path={{vertica_ssh_key_location}}/id_rsa
+  register: status
+  when: vertica_ssh_private_key is not defined
+
+# generate ssh keys on first host if not already generated
+- name: Create ssh keys
+  command: ssh-keygen -t rsa -b 2048 -f {{vertica_ssh_key_location}}/id_rsa -q -N ''
+  when: status is defined and not status.stat.exists and vertica_ssh_private_key is not defined
+
+- name: Read in private ssh key
+  slurp: src={{vertica_ssh_key_location}}/id_rsa
+  register: private_key_info
+  when: vertica_ssh_private_key is not defined
+
+- name: Read in public ssh key
+  slurp: src={{vertica_ssh_key_location}}/id_rsa.pub
+  register: public_key_info
+  when: vertica_ssh_public_key is not defined
+
+# sets the ssh keys on the first host
+- name: Set public and private key variables
+  set_fact: vertica_ssh_private_key="{{private_key_info.content | b64decode}}" vertica_ssh_public_key="{{public_key_info.content | b64decode}}"
+  when: vertica_ssh_private_key is not defined
+
+- name: Create id_rsa
+  copy: dest={{vertica_dbadmin_home}}/.ssh/id_rsa owner="{{vertica_dbadmin_user}}" group="{{vertica_dbadmin_group}}" mode=0600 content="{{vertica_ssh_private_key}}"
+
+- name: Create id_rsa.pub
+  copy: dest={{vertica_dbadmin_home}}/.ssh/id_rsa.pub owner="{{vertica_dbadmin_user}}" group="{{vertica_dbadmin_group}}" mode=0600 content="{{vertica_ssh_public_key}}"
+
+- name: Add public key to authorized keys
+  authorized_key: user="{{vertica_dbadmin_user}}" key="{{vertica_ssh_public_key}}"

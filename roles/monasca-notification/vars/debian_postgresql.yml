@@ -1,0 +1,4 @@
+---
+database_dependencies:
+  - libpq-dev
+  - python-psycopg2

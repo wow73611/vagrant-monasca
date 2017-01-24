@@ -1,0 +1,11 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+monasca_checks: {}
+monasca_agent_system_only: False
+agent_reconfigure_script: /usr/local/bin/monasca-reconfigure
+
+skip_install: False
+monasca_virtualenv_dir: /opt/monasca
+pip_conf_dir: ~/.pip
+run_mode: Deploy

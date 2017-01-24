@@ -1,0 +1,25 @@
+---
+
+log_level: WARN
+log_size: 10485760
+log_backup: 5
+kazoo_level: WARN
+kafka_level: WARN
+statsd_level: WARN
+
+mysql_node: 192.168.10.4
+mysql_db: mon
+mysql_user: monapi
+mysql_pass: password
+kafka_node: 192.168.10.4:9092
+zoo_node: 192.168.10.4:2181
+
+transform_group: monasca-events-transform
+transform_def_topic: transform-definitions
+events_topic: raw-events
+transformed_events_topic: transformed-events
+
+transform_processor_num: 1
+
+run_mode: Deploy
+skip_install: False

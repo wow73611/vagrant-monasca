@@ -1,0 +1,4 @@
+---
+
+- name: pip install monasca-events-transform
+  pip: name=monasca-events-transform state=latest

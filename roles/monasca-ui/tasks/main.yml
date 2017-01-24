@@ -1,0 +1,65 @@
+---
+- name: UI - Install monasca-ui package
+  pip: name=monasca-ui state=latest
+  notify:
+    - restart apache
+
+- name: UI - Link dashboard
+  file: src={{ ui_src_path }}{{ ui_py_file }} dest={{ ui_dest_path }}{{ ui_py_file }} state=link force=no
+
+- name: UI - Link monitoring directory
+  file: src={{ panel_src_path }} dest={{ panel_dest_path }} state=link force=no
+
+- name: UI - Fetch grafana tar.gz file
+  get_url: dest=/root/hpcloud-mon-grafana-{{grafana_version}}.tar.gz url={{github_tarball_url}}/{{grafana_version}}
+  register: download
+
+- name: UI - Uncompress the grafana tar
+  unarchive: copy=no dest={{ grafana_base_dir }} src=/root/hpcloud-mon-grafana-{{grafana_version}}.tar.gz
+  register: untar
+  when: download | changed
+  notify:
+    - restart apache
+
+# The dir that the tar is extracted to doesn't always match grafana_version so I have to extract it.
+# In Ansible 1.8 this was in the untar variable, in 2.0 there is list_files option you can add to unarchive but in 1.9 we must use this
+# command to discover the tar dir. This method will work for the other versions also.
+- name: Discover the tar path
+  command: tar -tzf /root/hpcloud-mon-grafana-{{grafana_version}}.tar.gz
+  register: tarpath
+  when: untar | changed
+
+- name: UI - Link grafana files
+  file: src={{grafana_base_dir}}/{{ tarpath.stdout_lines[0] | dirname }}/src dest={{ grafana_dest }} state=link force=no
+  when: untar | changed
+  notify:
+    - restart apache
+
+- name: UI - Enable grafana in Apache
+  lineinfile:
+    dest: /etc/apache2/sites-available/horizon.conf
+    line: '    Alias /grafana {{ grafana_dest }}'
+    insertafter: ' Alias '
+    state: present
+  notify:
+    - restart apache
+
+- name: UI - Link grafana configuration
+  file: src={{ grafana_dest }}/config.monasca.js dest={{ grafana_config }} state=link force=no
+  when: untar | changed
+
+- meta: flush_handlers
+
+- stat: path={{horizon_path}}manage.py
+  register: horizon_manage
+
+- name: UI - Collect the static files
+  command: python {{ horizon_path }}manage.py collectstatic --noinput
+  when: horizon_manage.stat.exists
+
+- name: UI - Update offline compression manifest
+  command: python {{ horizon_path }}manage.py compress --force
+  when: horizon_manage.stat.exists
+
+- name: Enable apache
+  service: name=apache2 state=started enabled=yes

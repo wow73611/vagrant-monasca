@@ -1,0 +1,43 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: setup monasca_group
+  group: name={{monasca_group}} system=yes
+
+- name: Setup user
+  user: name={{thresh_user}} system=yes group={{monasca_group}}
+
+- name: create conf_dir
+  file: path={{monasca_conf_dir}} state=directory owner=root group={{monasca_group}} mode=775
+
+- name: create conf_file from template
+  template: dest={{ thresh_conf_file }} owner=root group={{monasca_group}} mode=640 src=thresh-config.yml.j2
+  notify:
+    - restart monasca-thresh
+
+- name: create service script from template
+  template: dest=/etc/init.d/monasca-thresh owner=root group=root mode=744 src=monasca-thresh.j2
+  notify:
+    - restart monasca-thresh
+
+- name: Detect if this is a systemd based system
+  command: cat /proc/1/comm
+  register: init
+- set_fact: use_systemd=True
+  when: init.stdout == 'systemd'
+- set_fact: use_systemd=False
+  when: init.stdout != 'systemd'
+
+- name: create systemd config
+  template: dest=/etc/systemd/system/monasca-thresh.service owner=root group=root mode=644 src=monasca-thresh.service.j2
+  notify:
+    - restart monasca-thresh
+  when: use_systemd
+
+- command: systemctl daemon-reload
+  when: use_systemd
+
+- meta: flush_handlers
+
+- name: Enable the Service
+  service: name=monasca-thresh state=started enabled=yes

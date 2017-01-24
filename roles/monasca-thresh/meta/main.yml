@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: Tim Kuhlman
+  description: Installs Monasca-Thresh
+  company: HP
+  license: Apache
+  min_ansible_version: 1.7
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: RedHat
+    versions:
+    - all
+  categories:
+  - system
+dependencies: []

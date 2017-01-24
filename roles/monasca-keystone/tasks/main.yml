@@ -1,0 +1,38 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+# Copyright 2015 FUJITSU LIMITED
+
+- name: Gather OS Specific Variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+    - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}.yml"
+    - "defaults.yml"
+
+- include: DebianInst.yml
+  when: ansible_os_family == 'Debian' and not skip_install
+- include: RedHatInst.yml
+  when: ansible_os_family == 'RedHat' and not skip_install
+
+- name: Keystone User - Install dependencies
+  pip: name=python-keystoneclient state=present virtualenv="{{monasca_virtualenv_dir}}"
+  when: not skip_install
+
+# These tasks need a Keystone v2 endpoint
+- set_fact:
+     keystone_url_v2: "{{ keystone_url | replace('/v3', '/v2.0') }}"
+
+- set_fact:
+     keystone_local_cacert: "{{ keystone_cacert_location }}/{{ keystone_cacert }}"
+  when: keystone_cacert is defined
+
+- name: Copy cacert file if given
+  copy: src={{ keystone_cacert }} dest={{ keystone_local_cacert }} mode=0644
+  when: keystone_cacert is defined
+
+- name: Keystone Service - Create the keystone service python script
+  template: src=create_monasca_service.py.j2 dest={{ keystone_service_script }} mode=0700
+
+- name: Keystone Service - Execute the script
+  command: "{{monasca_virtualenv_dir}}/bin/python {{ keystone_service_script }}"

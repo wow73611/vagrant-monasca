@@ -1,0 +1,5 @@
+---
+
+- name: restart monasca-events-engine
+  service: name=events_engine state=restarted
+  when: run_mode == 'Deploy'

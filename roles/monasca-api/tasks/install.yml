@@ -1,0 +1,10 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: create jar dir
+  file: path={{monasca_jar_dir}} state=directory owner=root group=root mode=755
+
+- name: Fetch api jar
+  get_url: dest={{monasca_jar_dir}}/monasca-api.jar url="{{monasca_api_tarball_base_url}}/monasca-api-{{monasca_api_version}}-shaded.jar"
+  notify:
+    - restart monasca-api

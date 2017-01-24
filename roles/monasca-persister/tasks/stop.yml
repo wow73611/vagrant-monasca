@@ -1,0 +1,5 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: Stop Monasca-Persister
+  service: name=monasca-persister state=stopped

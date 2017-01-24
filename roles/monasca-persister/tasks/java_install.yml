@@ -1,0 +1,10 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: create jar_dir
+  file: path={{monasca_jar_dir}} state=directory owner=root group=root mode=755
+
+- name: Fetch persister jar
+  get_url: dest={{monasca_jar_dir}}/monasca-persister.jar url="{{persister_tarball_base_url}}/monasca-persister-{{persister_version}}-shaded.jar" force=yes timeout=100
+  notify:
+    - restart monasca-persister

@@ -1,0 +1,27 @@
+[logging]
+level = {{ log_level }}
+file = "{{ monasca_events_log_dir }}/transform.log"
+size = {{ log_size }}
+backup = {{ log_backup }}
+kazoo = {{ kazoo_level }}
+kafka = {{ kafka_level }}
+statsd = {{ statsd_level }}
+
+[mysql]
+database_name = {{ mysql_db }}
+hostname = {{ mysql_node }}
+username = {{ mysql_user }}
+password = "{{ mysql_pass }}"
+
+[kafka]
+url: {{ kafka_node }}
+transform_group: {{ transform_group }}
+transform_def_topic: {{ transform_def_topic }}
+events_topic: {{ events_topic }}
+transformed_events_topic: {{ transformed_events_topic }}
+
+[transform_processor]
+number: {{ transform_processor_num }}
+
+[zookeeper]
+url: {{ zoo_node }}

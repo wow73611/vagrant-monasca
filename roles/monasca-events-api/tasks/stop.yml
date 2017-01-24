@@ -1,0 +1,4 @@
+---
+
+- name: Stop Monasca Events API
+  service: name=monasca-events-api state=stopped

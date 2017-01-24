@@ -1,0 +1,98 @@
+kafka:
+    url: "{{kafka_hosts}}"
+    group: "{{notification_kafka_group}}"
+    alarm_topic: "{{alarm_topic}}"
+    notification_topic: "{{notification_topic}}"
+    notification_retry_topic: "{{notification_retry_topic}}"
+    max_offset_lag: 600  # In seconds, undefined for none
+
+database:
+{% if database_backend == 'postgresql' %}
+  repo_driver: monasca_notification.common.repositories.orm.orm_repo:OrmRepo
+  orm:
+    url: 'postgres://{{ database_user }}:{{ database_password }}@{{ database_host }}:{{ database_port }}/{{ database_name }}'
+{% else %}
+  repo_driver: monasca_notification.common.repositories.mysql.mysql_repo:MysqlRepo
+
+mysql:
+  host: {{ database_host }}
+  user: {{ database_user }}
+  passwd: {{ database_password }}
+  db: {{ database_name }}
+ {% if mysql_ssl is defined %}
+  ssl: {{mysql_ssl}}
+ {% endif %}
+{% endif %}
+
+notification_types:
+
+{% if notification_enable_email | bool %}
+    email:
+        server: "{{smtp_host}}"
+        port: 25
+        user: "{{smtp_user}}"
+        password: "{{smtp_password}}"
+        timeout: {{smtp_timeout}}
+        from_addr: "{{email_from_address}}"
+{% endif %}
+
+{% if notification_enable_webhook | bool %}
+    webhook:
+        timeout: 5
+{% endif %}
+
+{% if notification_enable_pagerduty | bool %}
+    pagerduty:
+        timeout: 5
+        url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json"
+{% endif %}
+
+processors:
+    alarm:
+        number: 2
+        ttl: 14400  # In seconds, undefined for none. Alarms older than this are not processed
+    notification:
+        number: 2
+
+retry:
+    interval: {{retry_interval}}
+    max_attempts: {{retry_max_attempts}}
+
+queues:
+    alarms_size: 256
+    finished_size: 256
+    notifications_size: 256
+    sent_notifications_size: 50  # limiting this size reduces potential # of re-sent notifications after a failure
+
+zookeeper:
+    url: "{{zookeeper_hosts}}"
+    notification_path: "{{zookeeper_notification_path}}"
+    notification_retry_path: "{{zookeeper_notification_retry_path}}"
+
+logging: # Used in logging.dictConfig
+    version: 1
+    disable_existing_loggers: False
+    formatters:
+        default:
+            format: "%(asctime)s %(levelname)s %(name)s %(message)s"
+    handlers:
+        console:
+            class: logging.StreamHandler
+            formatter: default
+        file:
+            class: logging.handlers.RotatingFileHandler
+            filename: "{{notification_log_dir}}/notification.log"
+            formatter: default
+            maxBytes: 10485760  # Rotate at file size ~10MB
+            backupCount: 5  # Keep 5 older logs around
+    loggers:
+        kazoo:
+            level: WARN
+        kafka:
+            level: WARN
+        statsd:
+            level: WARN
+    root:
+        handlers:
+            - file
+        level: {{ monasca_log_level }}

@@ -1,0 +1,43 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: create vertica dir
+  file: path={{monasca_jar_dir}}/vertica state=directory owner=root group=root mode=755
+  when: database_type == 'vertica'
+
+- name: check if vertica jar exists
+  stat: path={{monasca_jar_dir}}/vertica/vertica_jdbc.jar
+  register: status
+  when: database_type == 'vertica'
+
+- name: place vertica jdbc
+  command: cp {{vertica_jdbc_location}} {{monasca_jar_dir}}/vertica/vertica_jdbc.jar
+  when: database_type == 'vertica' and not status.stat.exists
+
+- name: Ensure vertica jdbc permissions
+  file: path={{monasca_jar_dir}}/vertica/vertica_jdbc.jar mode=644
+  when: database_type == 'vertica'
+
+- name: create conf_dir
+  file: path={{monasca_conf_dir}} state=directory owner=root group={{monasca_group}} mode=775
+
+- name: create conf_file from template
+  template: dest={{persister_java_conf_file}} owner={{persister_user}} group={{monasca_group}} mode=640 src=persister-config.yml.j2
+  notify:
+    - restart monasca-persister
+
+- name: create systemd startup script from template
+  template: dest={{persister_systemd_service}} owner=root group=root mode=644 src=monasca-persister-java.service.j2
+  notify:
+    - restart monasca-persister
+  when: use_systemd
+
+- command: systemctl daemon-reload
+  when: use_systemd
+
+- name: create upstart script from template
+  template: dest=/etc/init/monasca-persister.conf owner=root group=root mode=744 src=monasca-persister-java.conf.j2
+  notify:
+    - restart monasca-persister
+  when: not use_systemd
+

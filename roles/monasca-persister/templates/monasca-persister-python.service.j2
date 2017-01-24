@@ -1,0 +1,14 @@
+[Unit]
+Description=Monasca Persister
+Requires=network.manager
+After=network.manager
+
+[Service]
+Type=simple
+User={{ persister_user }}
+Group={{ monasca_group }}
+Restart=on-failure
+ExecStart={{monasca_virtualenv_dir}}/bin/monasca-persister --config-file {{ persister_python_conf_file }}
+
+[Install]
+WantedBy=multi-user.target

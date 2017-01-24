@@ -1,0 +1,11 @@
+# Startup script for the monasca-persister
+
+description "Monasca Persister java app"
+start on runlevel [2345]
+
+console log
+respawn
+
+setgid {{ monasca_group }}
+setuid {{ persister_user }}
+exec /usr/bin/java -Dfile.encoding=UTF-8 {{ monasca_persister_java_opts }} -cp {{monasca_jar_dir}}/monasca-persister.jar:{{monasca_jar_dir}}/vertica/vertica_jdbc.jar monasca.persister.PersisterApplication server {{ persister_java_conf_file }}

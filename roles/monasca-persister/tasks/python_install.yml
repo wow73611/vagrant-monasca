@@ -1,0 +1,7 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: pip install monasca-perister
+  pip: name=monasca-persister version="{{monasca_persister_version}}" virtualenv="{{monasca_virtualenv_dir}}"
+  notify:
+    - restart monasca-persister

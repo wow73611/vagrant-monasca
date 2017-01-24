@@ -1,0 +1,4 @@
+---
+
+- name: pip install monasca-events-engine
+  pip: name=monasca-events-engine state=latest

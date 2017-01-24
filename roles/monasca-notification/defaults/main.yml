@@ -1,0 +1,40 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+alarm_topic: alarm-state-transitions
+email_from_address: hpcs.mon@hp.com
+notification_kafka_group: monasca-notification
+notification_topic: alarm-notifications
+notification_retry_topic: retry-notifications
+notification_enable_email: true
+notification_enable_webhook: true
+notification_enable_pagerduty: true
+retry_interval: 30
+retry_max_attempts: 5
+zookeeper_notification_path: /notification/alarms
+zookeeper_notification_retry_path: /notification/retry
+monasca_conf_dir: /etc/monasca
+monasca_log_level: WARN
+monasca_notification_name: monasca-notification
+pip_conf_dir: ~/.pip
+database_support: true
+database_backend: mysql
+database_user: monapi
+database_password: password
+database_name: mon
+database_host: 192.168.10.4
+database_port: 5432
+smtp_timeout: 15
+smtp_user: ""
+smtp_password: ""
+get_pip_download_url: https://bootstrap.pypa.io
+
+monasca_virtualenv_dir: /opt/monasca
+run_mode: Deploy
+skip_install: False
+
+notification_log_dir: "{{ monasca_log_dir }}/notification"
+notification_systemd_service: /etc/systemd/system/monasca-notification.service
+notification_upstart_conf: /etc/init/monasca-notification.conf
+notification_user: mon-notification
+monasca_group: monasca

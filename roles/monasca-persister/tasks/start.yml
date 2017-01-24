@@ -1,0 +1,5 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: Start and Enable monasca-persister
+  service: name=monasca-persister state=started enabled=yes

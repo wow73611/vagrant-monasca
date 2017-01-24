@@ -1,0 +1,4 @@
+---
+
+- name: Start and enable monasca-events-transform
+  service: name=events_transform state=started enabled=yes

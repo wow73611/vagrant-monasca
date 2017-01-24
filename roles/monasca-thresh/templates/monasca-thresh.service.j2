@@ -1,0 +1,23 @@
+[Unit]
+After=nimbus.target systemd-journald.socket basic.target system.slice zookeeper.service
+Requires=basic.target
+SourcePath=/etc/rc.d/init.d/monasca-thresh
+Description=LSB: Monitoring threshold engine running under storm
+Conflicts=shutdown.target
+Before=shutdown.target multi-user.target graphical.target
+
+[Service]
+Type=forking
+Restart=always
+RestartSec=10
+TimeoutSec=5min
+KillMode=process
+IgnoreSIGPIPE=no
+GuessMainPID=no
+RemainAfterExit=yes
+ExecStart=/etc/rc.d/init.d/monasca-thresh start
+ExecStop=/etc/rc.d/init.d/monasca-thresh stop
+
+[Install]
+WantedBy=multi-user.target graphical.target
+

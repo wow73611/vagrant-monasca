@@ -1,0 +1,19 @@
+---
+horizon_path: /opt/stack/horizon/
+dashboard_path: "{{ horizon_path }}openstack_dashboard/"
+dashboard_settings_file: "{{ dashboard_path }}settings.py"
+
+grafana_base_dir: /opt/stack
+grafana_dest: "{{ apache_document_root }}grafana"
+grafana_config: "{{ grafana_dest }}/config.js"
+grafana_version: master
+
+panel_src_path: /usr/local/lib/python2.7/dist-packages/monitoring/
+panel_dest_path: "{{ horizon_path }}monitoring"
+
+ui_dest_path: "{{ dashboard_path }}local/enabled/"
+ui_src_path: "{{panel_src_path}}enabled/"
+ui_py_file: _50_admin_add_monitoring_panel.py
+
+
+

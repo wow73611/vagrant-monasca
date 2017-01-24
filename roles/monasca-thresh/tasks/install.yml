@@ -1,0 +1,11 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: create jar_dir
+  file: path={{monasca_jar_dir}} state=directory owner=root group=root mode=755
+
+- name: Fetch thresh jar
+  get_url: dest={{monasca_jar_dir}}/monasca-thresh.jar url="{{thresh_tarball_base_url}}/monasca-thresh-{{thresh_version}}-shaded.jar" force=yes
+  notify:
+    - restart monasca-thresh
+  when: not skip_install

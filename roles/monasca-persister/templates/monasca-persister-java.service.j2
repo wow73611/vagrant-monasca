@@ -1,0 +1,14 @@
+[Unit]
+Description=Monasca Persister
+Requires=network.target
+After=kafka.service influxdb.service network.target
+
+[Service]
+Type=simple
+User={{ persister_user }}
+Group={{ monasca_group }}
+Restart=on-failure
+ExecStart=/usr/bin/java -Dfile.encoding=UTF-8 {{ monasca_persister_java_opts }} -cp {{monasca_jar_dir}}/monasca-persister.jar:{{monasca_jar_dir}}/vertica/vertica_jdbc.jar monasca.persister.PersisterApplication server {{ persister_java_conf_file }}
+
+[Install]
+WantedBy=multi-user.target

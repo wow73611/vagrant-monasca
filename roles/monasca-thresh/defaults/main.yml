@@ -1,0 +1,28 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+kafka_event:
+  consumer_topic: events
+  group: thresh-event
+  producer_topic: alarm-state-transitions
+kafka_metric:
+  topic: metrics
+  group: thresh-metric
+monasca_conf_dir: /etc/monasca
+thresh_conf_file: "{{ monasca_conf_dir }}/thresh-config.yml"
+monasca_jar_dir: /opt/monasca
+monasca_group: monasca
+thresh_group: thresh
+driver_class: com.mysql.jdbc.Driver
+database_name: mon
+database_host: 192.168.10.4
+database_user: thresh
+database_password: password
+database_port: 3306
+hibernate_support_enabled: "false"
+thresh_tarball_base_url: http://tarballs.openstack.org/ci/monasca-thresh
+thresh_version: 1.1.0-SNAPSHOT
+thresh_statsd_host: localhost
+
+run_mode: Deploy
+skip_install: False

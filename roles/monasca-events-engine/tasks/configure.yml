@@ -1,0 +1,44 @@
+---
+
+- name: setup group
+  group: name={{events_group}} system=yes
+
+- name: Setup user
+  user: name={{events_user}} system=yes group={{events_group}}
+
+- name: create events log dir
+  file: path={{ monasca_events_log_dir }} state=directory owner={{events_user}} group={{events_group}} mode=775
+
+- name: create events-engine conf file from template
+  template: src="{{ events_engine_conf_file }}.j2" dest="{{ monasca_conf_dir }}/{{ events_engine_conf_file }}" owner={{events_user}} group={{events_group}} mode=640
+
+- name: create events-engine configuration files
+  copy: src={{ item }} dest="{{ monasca_conf_dir }}/{{ item }}" owner={{events_user}} group={{events_group}} mode=640
+  with_items:
+    - pipelines.yaml
+    - triggers.yaml
+    - winchester.yaml
+    - event_definitions.yaml
+
+- name: Detect if this is a systemd based system
+  command: cat /proc/1/comm
+  register: init
+- set_fact: use_systemd=True
+  when: init.stdout == 'systemd'
+- set_fact: use_systemd=False
+  when: init.stdout != 'systemd'
+
+- name: create upstart script from template
+  template: src="{{ events_engine_conf_upstart }}.j2" dest="/etc/init/events_engine.conf" owner=root group=root mode=644
+  notify:
+    - restart monasca-events-engine
+  when: not use_systemd
+
+- name: create systemd conf from template
+  template: src="{{ events_engine_service_file  }}.j2" dest="/etc/systemd/system/{{ events_engine_service_file  }}" owner={{events_user}} group={{events_group}}
+  when: use_systemd
+
+- command: systemctl daemon-reload
+  when: use_systemd
+
+- meta: flush_handlers

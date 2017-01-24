@@ -1,0 +1,6 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+# Copyright 2015 FUJITSU LIMITED
+
+dependencies:
+  - python-dev

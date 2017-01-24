@@ -1,0 +1,19 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+# Copyright 2015 FUJITSU LIMITED
+
+keystone_url: http://127.0.0.1:35357/v2.0
+keystone_region: RegionOne
+keystone_cacert_location: /var/tmp
+keystone_users:
+  - username: monasca-agent
+    password: password
+    project: mini-mon
+    role: monasca-agent
+keystone_service_script: /usr/local/bin/create_monasca_service.py
+monasca_api_url: http://localhost:8070/v2.0
+monasca_virtualenv_dir: /opt/monasca
+skip_install: False
+
+keystone_service_endpoints:
+  - {name: "monasca", description: "Monasca monitoring service", type: "monitoring", url: "{{ monasca_api_url }}"}

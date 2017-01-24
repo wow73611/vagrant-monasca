@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Angelo Mendonca
+  description: Installs Python Monasca Events
+  company: HP
+  license: Apache
+  min_ansible_version: 1.7
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  categories:
+  - clustering
+  - system
+dependencies: []

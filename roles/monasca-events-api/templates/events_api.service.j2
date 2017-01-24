@@ -1,0 +1,13 @@
+[Unit]
+Description=Monasca Events API
+After=kafka.service
+
+[Service]
+Type=simple
+User={{ events_user }}
+Group={{ events_group }}
+Restart=always
+ExecStart="{{ monasca_virtualenv_dir }}/bin/monasca-events-api" --config-file "{{ monasca_conf_dir }}/{{ events_conf_file }}"
+
+[Install]
+WantedBy=multi-user.target

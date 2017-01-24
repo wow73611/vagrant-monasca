@@ -1,0 +1,22 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: vertica | start | check service status
+  command: su dbadmin -c '/opt/vertica/bin/admintools -t view_cluster -d {{vertica_database_name}}'
+  register: running_result
+  run_once: true
+  changed_when: false
+  failed_when: false
+
+- name: vertica | start | start vertica service (when down)
+  command: su dbadmin -c '/opt/vertica/bin/admintools -t start_db -d {{vertica_database_name}} -p "{{vertica_dbadmin_password}}"'
+  register: status_start
+  failed_when: status_start | failed
+  run_once: true
+  when: running_result.stdout.find("DOWN") != -1
+
+- name: vertica | start | wait for vertica port
+  wait_for: port={{vertica_client_port}} host='127.0.0.1' state=started timeout={{monasca_wait_for_period}}
+
+- name: vertica agent | start | start vertica agent service
+  service: name=vertica_agent state=started

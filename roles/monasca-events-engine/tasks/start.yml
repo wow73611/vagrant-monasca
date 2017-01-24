@@ -1,0 +1,4 @@
+---
+
+- name: Start and enable monasca-events-engine
+  service: name=events_engine state=started enabled=yes

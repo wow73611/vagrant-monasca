@@ -1,0 +1,5 @@
+---
+- name: pip install python-monasca-events
+  pip: name=python-monasca-events state=latest
+  when: not skip_install
+  

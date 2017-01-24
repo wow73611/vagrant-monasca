@@ -1,0 +1,12 @@
+---
+# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+
+- name: restart monasca-api
+  service: name=monasca-api state=restarted
+  when: run_mode == 'Deploy'
+
+- name: restart firewalld
+  service: name=firewalld state=restarted enabled=yes
+
+- name: save iptables
+  command: /sbin/iptables-save

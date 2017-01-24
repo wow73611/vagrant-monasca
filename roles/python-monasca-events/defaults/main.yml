@@ -1,0 +1,4 @@
+---
+monasca_virtualenv_dir: /opt/monasca
+pip_conf_dir: ~/.pip
+skip_install: False

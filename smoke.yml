@@ -27,6 +27,9 @@
     - name: Populate config vars
       template: src="tests/smoke2_configs.py.j2" dest="{{test_base}}/{{tarpath.stdout_lines[0]}}/tests/smoke/smoke2_configs.py"
 
+    - name: pip install kafka-python
+      pip: name=kafka-python version=0.9.5
+
     - name: Run the smoke2 test
       command: "{{monasca_virtualenv_dir}}/bin/python {{test_base}}/{{tarpath.stdout_lines[0]}}/tests/smoke/smoke2.py"
       register: smoke2

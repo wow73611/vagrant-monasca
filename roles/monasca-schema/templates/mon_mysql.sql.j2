@@ -122,6 +122,7 @@ CREATE TABLE `notification_method` (
   `name` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(512) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `period` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -137,6 +138,7 @@ CREATE TABLE `sub_alarm_definition` (
   `threshold` double NOT NULL,
   `period` int(11) NOT NULL,
   `periods` int(11) NOT NULL,
+  `is_deterministic` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -158,10 +160,12 @@ CREATE TABLE `sub_alarm` (
   `expression` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `state` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'OK',
   PRIMARY KEY (`id`),
   KEY `fk_sub_alarm` (`alarm_id`),
   KEY `fk_sub_alarm_expr` (`sub_expression_id`),
   CONSTRAINT `fk_sub_alarm` FOREIGN KEY (`alarm_id`) REFERENCES `alarm` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_sub_alarm_state` FOREIGN KEY (`state`) REFERENCES `alarm_state` (`name`),
   CONSTRAINT `fk_sub_alarm_expr` FOREIGN KEY (`sub_expression_id`) REFERENCES `sub_alarm_definition` (`id`)
 );
 

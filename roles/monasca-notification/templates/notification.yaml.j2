@@ -4,6 +4,8 @@ kafka:
     alarm_topic: "{{alarm_topic}}"
     notification_topic: "{{notification_topic}}"
     notification_retry_topic: "{{notification_retry_topic}}"
+    periodic:
+        60: 60-seconds-notifications
     max_offset_lag: 600  # In seconds, undefined for none
 
 database:
@@ -68,6 +70,8 @@ zookeeper:
     url: "{{zookeeper_hosts}}"
     notification_path: "{{zookeeper_notification_path}}"
     notification_retry_path: "{{zookeeper_notification_retry_path}}"
+    periodic_path:
+        60: /notification/60_seconds
 
 logging: # Used in logging.dictConfig
     version: 1
@@ -96,3 +100,7 @@ logging: # Used in logging.dictConfig
         handlers:
             - file
         level: {{ monasca_log_level }}
+
+statsd:
+    host: localhost
+    port: 8125

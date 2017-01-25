@@ -47,6 +47,7 @@ kafka_topics:
   alarm-notifications: { replicas: "{{ kafka_replicas }}", partitions: "{{ kafka_events_partitions }}" }
   stream-notifications: { replicas: "{{ kafka_replicas }}", partitions: "{{ kafka_events_partitions }}" }
   retry-notifications: { replicas: "{{ kafka_replicas }}", partitions: "{{ kafka_retry_notifications_partitions }}" }
+  60-seconds-notifications: { replicas: "{{ kafka_replicas }}", partitions: "{{ kafka_metrics_partitions }}" }
 
 # migration pack is a array containing files names under files/migration/{db_name}
 # db_name can be either:

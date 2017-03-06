@@ -37,9 +37,8 @@ reporting-disabled = false
 
 [data]
   dir = "/var/opt/influxdb/data"
-{% if influxdb_version is defined and influxdb_version >= "0.9.3" %}
+# if influxdb_version is defined and influxdb_version >= "0.9.3"
   wal-dir = "/var/opt/influxdb/wal"
-{% endif %}
 
 
 ###
@@ -131,11 +130,8 @@ reporting-disabled = false
 ### Controls the listener for InfluxDB line protocol data via UDP.
 ###
 
-{% if influxdb_version is defined and influxdb_version >= "0.9.3" %}
+# if influxdb_version is defined and influxdb_version >= "0.9.3"
 [[udp]]
-{% else %}
-[udp]
-{% endif %}
   enabled = false
   # bind-address = ""
   # database = ""

@@ -1,4 +1,9 @@
 ---
+
+- name: Check for influxdb version
+  fail: msg="The version of influxdb must great than 0.9.3."
+  when: influxdb_version|version_compare('0.9.3', '<=')
+
 - name: Update config
   template: src=influxdb.conf.j2 dest=/etc/opt/influxdb/influxdb.conf
   when: influxdb_version|version_compare('0.9', '>=')

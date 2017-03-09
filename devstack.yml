@@ -17,13 +17,43 @@
       ignore_errors: true
     - name: Install virtualenv
       apt: name=python-virtualenv
-    - name: Install Agent plugin dependencies in virtualenv
-      pip: name={{item}} state=latest virtualenv="{{monasca_virtualenv_dir}}"
-      with_items:
-        - lxml
-        - libvirt-python
-        - mysql-python
-        - python-novaclient
+#    - name: Install Agent plugin dependencies in virtualenv
+#      pip: name={{item}} state=latest virtualenv="{{monasca_virtualenv_dir}}"
+#      #pip: name={{item}} state=present virtualenv="{{monasca_virtualenv_dir}}"
+#      with_items:
+#        - lxml
+#        - libvirt-python
+#        - mysql-python
+#        - python-novaclient
+
+    - name: Install lxml in virtualenv
+      pip: name=lxml version=3.7.2 virtualenv="{{monasca_virtualenv_dir}}"
+    - name: Install libvirt-python in virtualenv
+      pip: name=libvirt-python version=2.5.0 virtualenv="{{monasca_virtualenv_dir}}"
+    - name: Install mysql-python in virtualenv
+      pip: name=mysql-python version=1.2.5 virtualenv="{{monasca_virtualenv_dir}}"
+    - name: Install python-novaclient in virtualenv
+      pip: name=python-novaclient version=7.1.0 virtualenv="{{monasca_virtualenv_dir}}"
+
+    - name: Install pbr in virtualenv
+      pip: name=pbr version=1.10.0
+    - name: Install stevedore in virtualenv
+      pip: name=stevedore version=1.20.0
+    - name: Install debtcollector in virtualenv
+      pip: name=debtcollector version=1.11.0
+    - name: Install oslo.context in virtualenv
+      pip: name=oslo.context version=2.12.1
+    - name: Install oslo.i18n in virtualenv
+      pip: name=oslo.i18n version=3.12.0
+    - name: Install oslo.config in virtualenv
+      pip: name=oslo.config version=3.22.0
+    - name: Install oslo.utils in virtualenv
+      pip: name=oslo.utils version=3.22.0
+    - name: Install oslo.concurrency in virtualenv
+      pip: name=oslo.concurrency version=3.18.0
+    - name: Install oslo.log in virtualenv
+      pip: name=oslo.log version=3.20.0
+
     - name: Add mini-mon to hosts file
       lineinfile: dest=/etc/hosts regexp="^{{ mini_mon }}" line="{{ mini_mon }} mini-mon" state=present
   tasks:

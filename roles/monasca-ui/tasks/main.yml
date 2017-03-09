@@ -1,6 +1,6 @@
 ---
 - name: UI - Install monasca-ui package
-  pip: name=monasca-ui state=latest
+  pip: name=monasca-ui version=1.5.0 state=present
   notify:
     - restart apache
 

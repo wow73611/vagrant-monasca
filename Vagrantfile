@@ -27,10 +27,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # One vm just for devstack (to access the UI)
   config.vm.define "devstack" do |ds|
     ds.vm.hostname = "devstack"
+    ds.vm.box_version = "0.2.0"
     ds.vm.box = "monasca/devstack"
     ds.vm.network :private_network, ip: "192.168.10.5"
     ds.vm.provider "virtualbox" do |vb|
-      vb.memory = 7168
+      vb.memory = 10240
       vb.cpus = 4
     end
     ds.vm.provision "ansible" do |ansible|
@@ -45,7 +46,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     mm.vm.box = "ubuntu/trusty64"
     mm.vm.network :private_network, ip: "192.168.10.4"
     mm.vm.provider "virtualbox" do |vb|
-      vb.memory = 6144
+      vb.memory = 8192
       vb.cpus = 4
     end
     mm.vm.provision "ansible" do |ansible|

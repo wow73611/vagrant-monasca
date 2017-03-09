@@ -26,6 +26,9 @@
   notify: run monasca-setup
   when: monasca_agent_version is defined
 
+- name: pip install oslo.vmware
+  pip: name=oslo.vmware version=2.17.0 virtualenv="{{monasca_virtualenv_dir}}"
+
 - name: pip install psutil==3.0.1
   pip: name=psutil version=3.0.1 virtualenv="{{monasca_virtualenv_dir}}"
   notify: run monasca-setup

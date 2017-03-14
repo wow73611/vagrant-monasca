@@ -1,6 +1,12 @@
 ---
 # ©Copyright 2015 Hewlett-Packard Development Company, L.P.
 
+#- name: Install python-monascaclient in virtualenv
+#  pip: name=python-monascaclient version=1.5.0 virtualenv="{{monasca_virtualenv_dir}}"
+#
+#- name: pip install monasca-agent in a virtualenv
+#  pip: name=monasca-agent version=1.5.0 virtualenv="{{monasca_virtualenv_dir}}"
+
 - name: Setup default notification method
   monasca_notification_method:
     name: "{{notification_name}}"

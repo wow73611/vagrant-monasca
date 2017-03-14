@@ -1,8 +1,10 @@
 ---
 # ©Copyright 2015 Hewlett-Packard Development Company, L.P.
 
-- include: java_install.yml
-  when: monasca_persister_java
+- name: pip install pykafka in virtualenv
+  pip: name=pykafka version="2.5.0" virtualenv={{ monasca_virtualenv_dir }}
 
-- include: python_install.yml
-  when: not monasca_persister_java
+- name: pip install monasca-perister in virtualenv
+  pip: name=monasca-persister version={{ persister_version }} virtualenv={{ monasca_virtualenv_dir }}
+  notify:
+    - restart monasca-persister

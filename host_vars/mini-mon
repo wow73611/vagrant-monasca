@@ -1,5 +1,5 @@
 ---
-api_region: useast
+api_region: RegionOne
 influxdb_url: "http://{{mini_mon}}:8086"
 kafka_events_partitions: 4
 kafka_metrics_partitions: 4

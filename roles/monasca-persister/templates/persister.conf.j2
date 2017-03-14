@@ -7,6 +7,15 @@ debug = false
 # Show more verbose log output (sets INFO log level output) if debug is False
 verbose = true
 
+[repositories]
+# The driver to use for the metrics repository
+metrics_driver = monasca_persister.repositories.influxdb.metrics_repository:MetricInfluxdbRepository
+#metrics_driver = monasca_persister.repositories.cassandra.metrics_repository:MetricCassandraRepository
+
+# The driver to use for the alarm state history repository
+alarm_state_history_driver = monasca_persister.repositories.influxdb.alarm_state_history_repository:AlarmStateHistInfluxdbRepository
+#alarm_state_history_driver = monasca_persister.repositories.cassandra.alarm_state_history_repository:AlarmStateHistCassandraRepository
+
 [zookeeper]
 # Comma separated list of host:port
 uri = "{{zookeeper_hosts}}"
@@ -28,6 +37,7 @@ buffer_size = 4096
 max_buffer_size = 32768
 # Path in zookeeper for kafka consumer group partitioning algo
 zookeeper_path = /persister_partitions/alarm-state-transitions
+num_processors = 1
 
 [kafka_metrics]
 # Comma separated list of Kafka broker host:port.
@@ -45,6 +55,7 @@ buffer_size = 4096
 max_buffer_size = 32768
 # Path in zookeeper for kafka consumer group partitioning algo
 zookeeper_path = /persister_partitions/metrics
+num_processors = 1
 
 [influxdb]
 database_name = "{{influxdb_db}}"
@@ -53,4 +64,9 @@ port = 8086
 user = "{{influxdb_user}}"
 password = "{{influxdb_password}}"
 
+# Uncomment, set cluster_ip_addresses, and change the repositories to point to the cassandra classes
+#[cassandra]
+# Comma separated list of Cassandra node IP addresses. No spaces.
+#cluster_ip_addresses: 192.168.10.6
+#keyspace: monasca
 

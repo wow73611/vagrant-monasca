@@ -7,28 +7,13 @@
 - name: Setup user
   user: name={{monasca_api_user}} system=yes group={{monasca_group}}
 
-- name: create vertica dir
-  file: path={{monasca_jar_dir}}/vertica state=directory owner=root group=root mode=755
-  when: database_type == 'vertica'
-
-- name: check if vertica jar exists
-  stat: path={{monasca_jar_dir}}/vertica/vertica_jdbc.jar
-  register: status
-  when: database_type == 'vertica'
-
-- name: place vertica jdbc
-  command: cp {{vertica_jdbc_location}} {{monasca_jar_dir}}/vertica/vertica_jdbc.jar
-  when: database_type == 'vertica' and not status.stat.exists
-
-- name: Ensure vertica jdbc permissions
-  file: path={{monasca_jar_dir}}/vertica/vertica_jdbc.jar mode=644
-  when: database_type == 'vertica'
-
 - name: Detect if this is a systemd based system
   command: cat /proc/1/comm
   register: init
+
 - set_fact: use_systemd=True
   when: init.stdout == 'systemd'
+
 - set_fact: use_systemd=False
   when: init.stdout != 'systemd'
 
@@ -74,7 +59,7 @@
   when: use_systemd
 
 - name: create upstart script from template
-  template: dest=/etc/init/monasca-api.conf owner=root group=root mode=744 src=monasca-api.conf.j2
+  template: dest={{ api_upstart_service }} owner=root group=root mode=744 src=monasca-api.conf.j2
   notify:
     - restart monasca-api
   when: not use_systemd
@@ -88,26 +73,18 @@
 - name: create conf_dir
   file: path={{monasca_conf_dir}} state=directory owner=root group={{monasca_group}} mode=775
 
-- name: create conf_file from template
-  template: dest={{api_conf_file}} owner={{monasca_api_user}} group={{monasca_group}} mode=640 src=api-config.yml.j2
+- name: create api-config.ini from template
+  template: dest={{api_wsgi_file}} owner={{monasca_api_user}} group={{monasca_group}} mode=640 src=api-config.ini.j2
   notify:
     - restart monasca-api
 
-- name: Copy Truststore
-  copy: dest={{monasca_api_truststore}} src={{monasca_api_truststore_src}}
-  when: monasca_api_truststore_src is defined
+- name: create api-config.conf from template
+  template: dest={{api_conf_file}} owner={{monasca_api_user}} group={{monasca_group}} mode=640 src=api-config.conf.j2
   notify:
     - restart monasca-api
 
-- name: Copy Client Keystore
-  copy: dest={{monasca_api_client_keystore}} src={{monasca_api_client_keystore_src}}
-  when: monasca_api_client_keystore_src is defined
-  notify:
-    - restart monasca-api
-
-- name: Copy Keystore
-  copy: dest={{monasca_api_keystore}} src={{monasca_api_keystore_src}}
-  when: monasca_api_keystore_src is defined
+- name: create api-logging.conf from template
+  template: dest={{api_conf_logging}} owner={{monasca_api_user}} group={{monasca_group}} mode=640 src=api-logging.conf.j2
   notify:
     - restart monasca-api
 

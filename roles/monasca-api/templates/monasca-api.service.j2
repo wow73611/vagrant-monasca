@@ -8,8 +8,8 @@ Type=simple
 User={{ monasca_api_user }}
 Group={{ monasca_group }}
 LimitNOFILE=32768
+ExecStart={{ monasca_virtualenv_dir }}/bin/gunicorn -n monasca-api -k eventlet --worker-connections=2000 --backlog=1000 --paste {{ api_wsgi_file }}
 Restart=on-failure
-ExecStart=/usr/bin/java -Dfile.encoding=UTF-8 {{ monasca_api_java_opts }} -cp {{ monasca_jar_dir }}/monasca-api.jar:{{ monasca_jar_dir }}/vertica/vertica_jdbc.jar monasca.api.MonApiApplication server {{api_conf_file}}
 
 [Install]
 WantedBy=multi-user.target

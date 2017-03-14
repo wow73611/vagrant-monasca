@@ -5,5 +5,8 @@ monasca_api_user: mon-api
 monasca_conf_dir: /etc/monasca
 monasca_group: monasca
 api_log_dir: "{{ monasca_log_dir }}/api"
-api_conf_file: "{{ monasca_conf_dir }}/api-config.yml"
+api_wsgi_file: "{{ monasca_conf_dir }}/api-config.ini"
+api_conf_file: "{{ monasca_conf_dir }}/api-config.conf"
+api_conf_logging: "{{ monasca_conf_dir }}/api-logging.conf"
 api_systemd_service: /etc/systemd/system/monasca-api.service
+api_upstart_service: /etc/init/monasca-api.conf

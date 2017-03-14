@@ -8,4 +8,4 @@ respawn
 
 setgid {{ monasca_group }}
 setuid {{ persister_user }}
-exec {{monasca_virtualenv_dir}}/bin/monasca-persister --config-file {{ persister_python_conf_file }}
+exec {{monasca_virtualenv_dir}}/bin/monasca-persister --config-file {{ persister_conf_file }}

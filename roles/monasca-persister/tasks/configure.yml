@@ -7,6 +7,16 @@
 - name: Setup user
   user: name={{persister_user}} system=yes group={{monasca_group}}
 
+- name: Detect if this is a systemd based system
+  command: cat /proc/1/comm
+  register: init
+
+- set_fact: use_systemd=True
+  when: init.stdout == 'systemd'
+
+- set_fact: use_systemd=False
+  when: init.stdout != 'systemd'
+
 - name: create monasca log directory
   file: path={{monasca_log_dir}} state=directory owner=root group={{monasca_group}} mode=775
 
@@ -16,18 +26,24 @@
 - name: create conf_dir
   file: path={{monasca_conf_dir}} state=directory owner=root group={{monasca_group}} mode=775
 
-- name: Detect if this is a systemd based system
-  command: cat /proc/1/comm
-  register: init
-- set_fact: use_systemd=True
-  when: init.stdout == 'systemd'
-- set_fact: use_systemd=False
-  when: init.stdout != 'systemd'
+- name: create conf_file from template
+  template: dest={{persister_conf_file}} owner={{persister_user}} group={{monasca_group}} mode=640 src=persister.conf.j2
+  notify:
+    - restart monasca-persister
 
-- include: java_configure.yml
-  when: monasca_persister_java
+- name: create upstart script from template
+  template: dest={{persister_upstart_service}} owner=root group=root mode=644 src=monasca-persister.conf.j2
+  notify:
+    - restart monasca-persister
+  when: not use_systemd
 
-- include: python_configure.yml
-  when: not monasca_persister_java
+- name: create systemd config from template
+  template: dest={{persister_systemd_service}} owner=root group=root mode=644 src=monasca-persister.service.j2
+  notify:
+    - restart monasca-persister
+  when: use_systemd
+
+- command: systemctl daemon-reload
+  when: use_systemd
 
 - meta: flush_handlers

@@ -3,38 +3,34 @@
 
 influxdb_db: mon
 keystone_auth_method: password
-keystone_admin_token:
+keystone_admin:
+keystone_admin_password:
+keystone_admin_project:
 keystone_port: 5000
-keystone_use_https: false
-keystone_client_auth: false
-monasca_admin_client_port: 8081
+keystone_identity: "http://{{ keystone_host }}:35357"
+keystone_auth: "http://{{ keystone_host }}:{{ keystone_port }}"
+monasca_virtualenv_dir: /opt/monasca
+monasca_gunicorn_version: 19.6.0
+monasca_influxdb_version: 4.0.0
+monasca_api_version: 1.6.0
+monasca_api_bind_host: "{{ monasca_api_host }}"
 monasca_api_client_port: 8070
-monasca_api_client_keystore:
-monasca_api_client_keystore_password:
-monasca_api_java_opts: -Xmx1g
-monasca_api_truststore:
-monasca_api_truststore_password:
-monasca_api_keystore_password:
-monasca_api_tarball_base_url: http://tarballs.openstack.org/ci/monasca-api
-monasca_api_version: 1.2.0-SNAPSHOT
 monasca_wait_for_period: 10
+monasca_conf_dir: /etc/monasca
 monasca_log_dir: /var/log/monasca
 monasca_log_level: WARN
-monasca_jar_dir: /opt/monasca
 database_name: mon
 database_type: influxdb
-hibernate_support_enabled: "false"
 database_port: 3306
 database_host: 192.168.10.4
 database_user: monapi
 database_password: password
-driver_class: org.postgresql.ds.PGPoolingDataSource
 
 run_mode: Deploy
 skip_install: False
 verify: True
 
-defaultAuthorizedRoles: [user, domainuser, domainadmin, monasca-user]
-agentAuthorizedRoles: [monasca-agent]
-
-mon_api_wait_timeout: 60
+authorized_roles_default: "user, domainuser, domainadmin, monasca-user"
+authorized_roles_agent: "monasca-agent"
+authorized_roles_read_only: "monasca-read-only-user"
+authorized_roles_delegate: "admin"

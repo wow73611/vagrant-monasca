@@ -1,0 +1,2681 @@
+{
+    "hostvars[inventory_hostname]": {
+        "admin_tools_status": {
+            "changed": false,
+            "skipped": true
+        },
+        "agent_cert_info": {
+            "changed": false,
+            "skipped": true
+        },
+        "agent_key_info": {
+            "changed": false,
+            "skipped": true
+        },
+        "agent_pem_info": {
+            "changed": false,
+            "skipped": true
+        },
+        "ansible_all_ipv4_addresses": [
+            "10.0.2.15",
+            "192.168.10.4"
+        ],
+        "ansible_all_ipv6_addresses": [
+            "fe80::a00:27ff:fe0f:3b30",
+            "fe80::a00:27ff:fe72:2f81"
+        ],
+        "ansible_architecture": "x86_64",
+        "ansible_bios_date": "12/01/2006",
+        "ansible_bios_version": "VirtualBox",
+        "ansible_cmdline": {
+            "BOOT_IMAGE": "/boot/vmlinuz-3.13.0-107-generic",
+            "console": "ttyS0",
+            "ro": true,
+            "root": "UUID=a402661a-0bbd-4f0a-8a8c-4caff3228cdd"
+        },
+        "ansible_date_time": {
+            "date": "2017-02-02",
+            "day": "02",
+            "epoch": "1486015649",
+            "hour": "06",
+            "iso8601": "2017-02-02T06:07:29Z",
+            "iso8601_micro": "2017-02-02T06:07:29.671966Z",
+            "minute": "07",
+            "month": "02",
+            "second": "29",
+            "time": "06:07:29",
+            "tz": "UTC",
+            "tz_offset": "+0000",
+            "weekday": "Thursday",
+            "year": "2017"
+        },
+        "ansible_default_ipv4": {
+            "address": "10.0.2.15",
+            "alias": "eth0",
+            "gateway": "10.0.2.2",
+            "interface": "eth0",
+            "macaddress": "08:00:27:0f:3b:30",
+            "mtu": 1500,
+            "netmask": "255.255.255.0",
+            "network": "10.0.2.0",
+            "type": "ether"
+        },
+        "ansible_default_ipv6": {},
+        "ansible_devices": {
+            "sda": {
+                "holders": [],
+                "host": "SATA controller: Intel Corporation 82801HM/HEM (ICH8M/ICH8M-E) SATA Controller [AHCI mode] (rev 02)",
+                "model": "VBOX HARDDISK",
+                "partitions": {
+                    "sda1": {
+                        "sectors": "83884032",
+                        "sectorsize": 512,
+                        "size": "40.00 GB",
+                        "start": "2048"
+                    }
+                },
+                "removable": "0",
+                "rotational": "1",
+                "scheduler_mode": "deadline",
+                "sectors": "83886080",
+                "sectorsize": "512",
+                "size": "40.00 GB",
+                "support_discard": "0",
+                "vendor": "ATA"
+            }
+        },
+        "ansible_distribution": "Ubuntu",
+        "ansible_distribution_major_version": "14",
+        "ansible_distribution_release": "trusty",
+        "ansible_distribution_version": "14.04",
+        "ansible_domain": "",
+        "ansible_env": {
+            "HOME": "/home/vagrant",
+            "LANG": "en_US.UTF-8",
+            "LC_CTYPE": "en_US.UTF-8",
+            "LOGNAME": "vagrant",
+            "MAIL": "/var/mail/vagrant",
+            "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games",
+            "PWD": "/home/vagrant",
+            "SHELL": "/bin/bash",
+            "SHLVL": "1",
+            "SSH_CLIENT": "10.0.2.2 59868 22",
+            "SSH_CONNECTION": "10.0.2.2 59868 10.0.2.15 22",
+            "SSH_TTY": "/dev/pts/9",
+            "TERM": "xterm-256color",
+            "USER": "vagrant",
+            "XDG_RUNTIME_DIR": "/run/user/1000",
+            "XDG_SESSION_ID": "4",
+            "_": "/bin/sh"
+        },
+        "ansible_eth0": {
+            "active": true,
+            "device": "eth0",
+            "ipv4": {
+                "address": "10.0.2.15",
+                "netmask": "255.255.255.0",
+                "network": "10.0.2.0"
+            },
+            "ipv6": [
+                {
+                    "address": "fe80::a00:27ff:fe0f:3b30",
+                    "prefix": "64",
+                    "scope": "link"
+                }
+            ],
+            "macaddress": "08:00:27:0f:3b:30",
+            "module": "e1000",
+            "mtu": 1500,
+            "promisc": false,
+            "type": "ether"
+        },
+        "ansible_eth1": {
+            "active": true,
+            "device": "eth1",
+            "ipv4": {
+                "address": "192.168.10.4",
+                "netmask": "255.255.255.0",
+                "network": "192.168.10.0"
+            },
+            "ipv6": [
+                {
+                    "address": "fe80::a00:27ff:fe72:2f81",
+                    "prefix": "64",
+                    "scope": "link"
+                }
+            ],
+            "macaddress": "08:00:27:72:2f:81",
+            "module": "e1000",
+            "mtu": 1500,
+            "promisc": false,
+            "type": "ether"
+        },
+        "ansible_fips": false,
+        "ansible_form_factor": "Other",
+        "ansible_fqdn": "mini-mon",
+        "ansible_hostname": "mini-mon",
+        "ansible_interfaces": [
+            "lo",
+            "eth1",
+            "eth0"
+        ],
+        "ansible_kernel": "3.13.0-107-generic",
+        "ansible_lo": {
+            "active": true,
+            "device": "lo",
+            "ipv4": {
+                "address": "127.0.0.1",
+                "netmask": "255.0.0.0",
+                "network": "127.0.0.0"
+            },
+            "ipv6": [
+                {
+                    "address": "::1",
+                    "prefix": "128",
+                    "scope": "host"
+                }
+            ],
+            "mtu": 65536,
+            "promisc": false,
+            "type": "loopback"
+        },
+        "ansible_lsb": {
+            "codename": "trusty",
+            "description": "Ubuntu 14.04.5 LTS",
+            "id": "Ubuntu",
+            "major_release": "14",
+            "release": "14.04"
+        },
+        "ansible_machine": "x86_64",
+        "ansible_memfree_mb": 1504,
+        "ansible_memtotal_mb": 5969,
+        "ansible_mounts": [
+            {
+                "device": "/dev/sda1",
+                "fstype": "ext4",
+                "mount": "/",
+                "options": "rw",
+                "size_available": 37682053120,
+                "size_total": 42241163264
+            }
+        ],
+        "ansible_nodename": "mini-mon",
+        "ansible_os_family": "Debian",
+        "ansible_pkg_mgr": "apt",
+        "ansible_processor": [
+            "GenuineIntel",
+            "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+            "GenuineIntel",
+            "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+            "GenuineIntel",
+            "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+            "GenuineIntel",
+            "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz"
+        ],
+        "ansible_processor_cores": 4,
+        "ansible_processor_count": 1,
+        "ansible_processor_threads_per_core": 1,
+        "ansible_processor_vcpus": 4,
+        "ansible_product_name": "VirtualBox",
+        "ansible_product_serial": "NA",
+        "ansible_product_uuid": "NA",
+        "ansible_product_version": "1.2",
+        "ansible_python_version": "2.7.6",
+        "ansible_selinux": false,
+        "ansible_ssh_host": "127.0.0.1",
+        "ansible_ssh_host_key_dsa_public": "AAAAB3NzaC1kc3MAAACBANjh58c6c2YSqQw3zkq7OlgkGfNobH5k/YXCCX6pXjg7tbrTyfuERTLiISghpVRoS/rV9IL+ly7KaNd9QeSjt57Amc0Qm1g5xAegoXPC/zViCnL+fWsy6d4WFCcbbST7R39qzADGSrHyQvB6KKn6SzFsTGCCWGvaMlOl83yfNSWFAAAAFQDjKVrJVALlj1a7UVXfn0L7DMm0iwAAAIEApOkqWvCeYLNSQyKT2T2W6p1L13CGU3KY/gLjmlRVhexgRbSEV2u+9Iito878/XRALyeVNvfeQKKZUfI92XZ8/XnugDKHq2qLpsntUEG4qnj6M3zIGGN5btwQ2aA7jZ2DDK4qZAjVEN5QHFRGVN1rezmffA9gFnAUUianMBSHGVAAAACAMXcnZURkbpmXesbW5U9ETKcnTUA8mSPPZsnFKqxvLng7aOT/ELXYlayDV4T70Yl/toIOUqpd1Cwq1g/sWcqlUPjgZgcNwe/8geRFFklKRsbJIC0TXKTV1iNq/FULI6BPOmDTvbkPuHFV/LJ9CPYSB/31dzfauS2jAUz2DPplmFs=",
+        "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGd9HvB3M/A+Z7A3BY4Fwdp7pqhm4VBNL8Wvas12A75BAUZxygZXCbcRbnw8/hpQgYLUsBUeoiqGHEqUcR9zlvQ=",
+        "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABAQDraJ6Voth0WlIMgjbgwG/u6ACx9/awXbXAisI4BTla/zUwBD1McL2vApZbdibeGrvLlV34knoh46uu+xh7KnadvOaXx8aSl3d+1utcWqGGMdeHLyLSbV5zYJmBAm03yq92drwQSb+WqGRCmgrpqYosb3YZ0Wk+7zqFIM3GM52K7V1wJXgIUl+fsRPdMPcEO4Eak9VBcWuxVKAtUyJLY9XxKW8JOpSedJZNenAlvhzqNDVwEOw/NDMLUdlQka6iBOJ3kuzv5t0MSYTI8IIlkzJlusLgoA7g7PfQCpyfR7P3Vdh3OIvhPNYS6rfag9wELgGB+w5VMsNDMFUD6K1LNBKn",
+        "ansible_ssh_port": 2200,
+        "ansible_ssh_private_key_file": "/home/robin/vagrant/vagrant-monasca/.vagrant/machines/mini-mon/virtualbox/private_key",
+        "ansible_ssh_user": "vagrant",
+        "ansible_swapfree_mb": 0,
+        "ansible_swaptotal_mb": 0,
+        "ansible_system": "Linux",
+        "ansible_system_vendor": "innotek GmbH",
+        "ansible_user_id": "vagrant",
+        "ansible_userspace_architecture": "x86_64",
+        "ansible_userspace_bits": "64",
+        "ansible_virtualization_role": "guest",
+        "ansible_virtualization_type": "virtualbox",
+        "api_region": "useast",
+        "check_allow_tcp": {
+            "changed": false,
+            "msg": "All items completed",
+            "results": [
+                {
+                    "changed": false,
+                    "cmd": "iptables -L | grep -q \"Allow_tcp_8070\"",
+                    "delta": "0:00:00.007869",
+                    "end": "2017-02-02 06:03:06.574635",
+                    "invocation": {
+                        "module_args": "iptables -L | grep -q \"Allow_tcp_8070\"",
+                        "module_name": "shell"
+                    },
+                    "item": "8070",
+                    "rc": 0,
+                    "start": "2017-02-02 06:03:06.566766",
+                    "stderr": "",
+                    "stdout": "",
+                    "stdout_lines": [],
+                    "warnings": []
+                }
+            ]
+        },
+        "check_result": {
+            "changed": true,
+            "msg": "All items completed",
+            "results": [
+                {
+                    "changed": true,
+                    "cmd": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic 60-seconds-notifications | grep 60-seconds-notifications",
+                    "delta": "0:00:01.275897",
+                    "end": "2017-02-02 06:02:50.146331",
+                    "invocation": {
+                        "module_args": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic 60-seconds-notifications | grep 60-seconds-notifications",
+                        "module_name": "shell"
+                    },
+                    "item": {
+                        "key": "60-seconds-notifications",
+                        "value": {
+                            "partitions": "4",
+                            "replicas": "1"
+                        }
+                    },
+                    "rc": 0,
+                    "start": "2017-02-02 06:02:48.870434",
+                    "stderr": "",
+                    "stdout": "60-seconds-notifications",
+                    "warnings": []
+                },
+                {
+                    "changed": true,
+                    "cmd": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic stream-notifications | grep stream-notifications",
+                    "delta": "0:00:01.239580",
+                    "end": "2017-02-02 06:02:51.616687",
+                    "invocation": {
+                        "module_args": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic stream-notifications | grep stream-notifications",
+                        "module_name": "shell"
+                    },
+                    "item": {
+                        "key": "stream-notifications",
+                        "value": {
+                            "partitions": "4",
+                            "replicas": "1"
+                        }
+                    },
+                    "rc": 0,
+                    "start": "2017-02-02 06:02:50.377107",
+                    "stderr": "",
+                    "stdout": "stream-notifications",
+                    "warnings": []
+                },
+                {
+                    "changed": true,
+                    "cmd": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic metrics | grep metrics",
+                    "delta": "0:00:01.197584",
+                    "end": "2017-02-02 06:02:53.042260",
+                    "invocation": {
+                        "module_args": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic metrics | grep metrics",
+                        "module_name": "shell"
+                    },
+                    "item": {
+                        "key": "metrics",
+                        "value": {
+                            "partitions": "4",
+                            "replicas": "1"
+                        }
+                    },
+                    "rc": 0,
+                    "start": "2017-02-02 06:02:51.844676",
+                    "stderr": "",
+                    "stdout": "metrics",
+                    "warnings": []
+                },
+                {
+                    "changed": true,
+                    "cmd": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic stream-definitions | grep stream-definitions",
+                    "delta": "0:00:01.295591",
+                    "end": "2017-02-02 06:02:54.532365",
+                    "invocation": {
+                        "module_args": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic stream-definitions | grep stream-definitions",
+                        "module_name": "shell"
+                    },
+                    "item": {
+                        "key": "stream-definitions",
+                        "value": {
+                            "partitions": "4",
+                            "replicas": "1"
+                        }
+                    },
+                    "rc": 0,
+                    "start": "2017-02-02 06:02:53.236774",
+                    "stderr": "",
+                    "stdout": "stream-definitions",
+                    "warnings": []
+                },
+                {
+                    "changed": true,
+                    "cmd": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic retry-notifications | grep retry-notifications",
+                    "delta": "0:00:01.275717",
+                    "end": "2017-02-02 06:02:56.020675",
+                    "invocation": {
+                        "module_args": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic retry-notifications | grep retry-notifications",
+                        "module_name": "shell"
+                    },
+                    "item": {
+                        "key": "retry-notifications",
+                        "value": {
+                            "partitions": "3",
+                            "replicas": "1"
+                        }
+                    },
+                    "rc": 0,
+                    "start": "2017-02-02 06:02:54.744958",
+                    "stderr": "",
+                    "stdout": "retry-notifications",
+                    "warnings": []
+                },
+                {
+                    "changed": true,
+                    "cmd": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic raw-events | grep raw-events",
+                    "delta": "0:00:01.241173",
+                    "end": "2017-02-02 06:02:57.477642",
+                    "invocation": {
+                        "module_args": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic raw-events | grep raw-events",
+                        "module_name": "shell"
+                    },
+                    "item": {
+                        "key": "raw-events",
+                        "value": {
+                            "partitions": "4",
+                            "replicas": "1"
+                        }
+                    },
+                    "rc": 0,
+                    "start": "2017-02-02 06:02:56.236469",
+                    "stderr": "",
+                    "stdout": "raw-events",
+                    "warnings": []
+                },
+                {
+                    "changed": true,
+                    "cmd": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic alarm-state-transitions | grep alarm-state-transitions",
+                    "delta": "0:00:01.311718",
+                    "end": "2017-02-02 06:02:59.008149",
+                    "invocation": {
+                        "module_args": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic alarm-state-transitions | grep alarm-state-transitions",
+                        "module_name": "shell"
+                    },
+                    "item": {
+                        "key": "alarm-state-transitions",
+                        "value": {
+                            "partitions": "4",
+                            "replicas": "1"
+                        }
+                    },
+                    "rc": 0,
+                    "start": "2017-02-02 06:02:57.696431",
+                    "stderr": "",
+                    "stdout": "alarm-state-transitions",
+                    "warnings": []
+                },
+                {
+                    "changed": true,
+                    "cmd": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic alarm-notifications | grep alarm-notifications",
+                    "delta": "0:00:01.386166",
+                    "end": "2017-02-02 06:03:00.624560",
+                    "invocation": {
+                        "module_args": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic alarm-notifications | grep alarm-notifications",
+                        "module_name": "shell"
+                    },
+                    "item": {
+                        "key": "alarm-notifications",
+                        "value": {
+                            "partitions": "4",
+                            "replicas": "1"
+                        }
+                    },
+                    "rc": 0,
+                    "start": "2017-02-02 06:02:59.238394",
+                    "stderr": "",
+                    "stdout": "alarm-notifications",
+                    "warnings": []
+                },
+                {
+                    "changed": true,
+                    "cmd": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic transform-definitions | grep transform-definitions",
+                    "delta": "0:00:01.270494",
+                    "end": "2017-02-02 06:03:02.106852",
+                    "invocation": {
+                        "module_args": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic transform-definitions | grep transform-definitions",
+                        "module_name": "shell"
+                    },
+                    "item": {
+                        "key": "transform-definitions",
+                        "value": {
+                            "partitions": "4",
+                            "replicas": "1"
+                        }
+                    },
+                    "rc": 0,
+                    "start": "2017-02-02 06:03:00.836358",
+                    "stderr": "",
+                    "stdout": "transform-definitions",
+                    "warnings": []
+                },
+                {
+                    "changed": true,
+                    "cmd": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic transformed-events | grep transformed-events",
+                    "delta": "0:00:01.224702",
+                    "end": "2017-02-02 06:03:03.537527",
+                    "invocation": {
+                        "module_args": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic transformed-events | grep transformed-events",
+                        "module_name": "shell"
+                    },
+                    "item": {
+                        "key": "transformed-events",
+                        "value": {
+                            "partitions": "4",
+                            "replicas": "1"
+                        }
+                    },
+                    "rc": 0,
+                    "start": "2017-02-02 06:03:02.312825",
+                    "stderr": "",
+                    "stdout": "transformed-events",
+                    "warnings": []
+                },
+                {
+                    "changed": true,
+                    "cmd": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic events | grep events",
+                    "delta": "0:00:01.207815",
+                    "end": "2017-02-02 06:03:04.968846",
+                    "invocation": {
+                        "module_args": "/opt/kafka/bin/kafka-topics.sh --list --zookeeper 192.168.10.4:2181 --topic events | grep events",
+                        "module_name": "shell"
+                    },
+                    "item": {
+                        "key": "events",
+                        "value": {
+                            "partitions": "4",
+                            "replicas": "1"
+                        }
+                    },
+                    "rc": 0,
+                    "start": "2017-02-02 06:03:03.761031",
+                    "stderr": "",
+                    "stdout": "events",
+                    "warnings": []
+                }
+            ]
+        },
+        "copy_result": {
+            "changed": false,
+            "skipped": true
+        },
+        "create_database": {
+            "changed": false,
+            "skipped": true
+        },
+        "database_dependencies": [
+            "python-mysqldb",
+            "libmysqlclient-dev"
+        ],
+        "database_host": "{{mini_mon}}",
+        "default_notification": {
+            "changed": false,
+            "invocation": {
+                "module_args": "",
+                "module_name": "monasca_notification_method"
+            },
+            "keystone_token": "58a0a61ad4c5402eb12a70aaef375446",
+            "monasca_api_url": "http://192.168.10.4:8070/v2.0",
+            "notification_method_id": "0e90f151-305d-45b3-a50a-0bf7e077b6a5"
+        },
+        "dependencies": [
+            "python-dev",
+            "build-essential"
+        ],
+        "devstack": "192.168.10.5",
+        "dir_ok": {
+            "changed": false,
+            "skipped": true
+        },
+        "download": {
+            "changed": false,
+            "dest": "/opt/monasca//monasca-ci.tar.gz",
+            "gid": 0,
+            "group": "root",
+            "invocation": {
+                "module_args": "dest=\"/opt/monasca//monasca-ci.tar.gz\" url=\"https://api.github.com/repos/hpcloud-mon/monasca-ci/tarball/master\"",
+                "module_name": "get_url"
+            },
+            "mode": "0644",
+            "msg": "file already exists",
+            "owner": "root",
+            "size": 22778,
+            "state": "file",
+            "uid": 0,
+            "url": "https://api.github.com/repos/hpcloud-mon/monasca-ci/tarball/master"
+        },
+        "dpkg_result": {
+            "changed": false,
+            "cmd": [
+                "dpkg",
+                "--skip-same-version",
+                "-i",
+                "/opt/monasca_download_dir/influxdb_0.9.1_amd64.deb"
+            ],
+            "delta": "0:00:00.092892",
+            "end": "2017-02-02 06:02:11.727253",
+            "invocation": {
+                "module_args": "dpkg --skip-same-version -i /opt/monasca_download_dir/influxdb_0.9.1_amd64.deb",
+                "module_name": "command"
+            },
+            "rc": 0,
+            "start": "2017-02-02 06:02:11.634361",
+            "stderr": "dpkg: version 0.9.1 of influxdb already installed, skipping",
+            "stdout": "",
+            "stdout_lines": [],
+            "warnings": []
+        },
+        "facter_architecture": "amd64",
+        "facter_augeasversion": "1.2.0",
+        "facter_bios_release_date": "12/01/2006",
+        "facter_bios_vendor": "innotek GmbH",
+        "facter_bios_version": "VirtualBox",
+        "facter_blockdevice_sda_model": "VBOX HARDDISK",
+        "facter_blockdevice_sda_size": 42949672960,
+        "facter_blockdevice_sda_vendor": "ATA",
+        "facter_blockdevices": "sda",
+        "facter_boardmanufacturer": "Oracle Corporation",
+        "facter_boardproductname": "VirtualBox",
+        "facter_boardserialnumber": "0",
+        "facter_facterversion": "1.7.5",
+        "facter_filesystems": "ext2,ext3,ext4,vfat",
+        "facter_hardwareisa": "x86_64",
+        "facter_hardwaremodel": "x86_64",
+        "facter_hostname": "mini-mon",
+        "facter_id": "vagrant",
+        "facter_interfaces": "eth0,eth1,lo",
+        "facter_ipaddress": "10.0.2.15",
+        "facter_ipaddress_eth0": "10.0.2.15",
+        "facter_ipaddress_eth1": "192.168.10.4",
+        "facter_ipaddress_lo": "127.0.0.1",
+        "facter_is_virtual": "true",
+        "facter_kernel": "Linux",
+        "facter_kernelmajversion": "3.13",
+        "facter_kernelrelease": "3.13.0-107-generic",
+        "facter_kernelversion": "3.13.0",
+        "facter_lsbdistcodename": "trusty",
+        "facter_lsbdistdescription": "Ubuntu 14.04.5 LTS",
+        "facter_lsbdistid": "Ubuntu",
+        "facter_lsbdistrelease": "14.04",
+        "facter_lsbmajdistrelease": "14",
+        "facter_macaddress": "08:00:27:0f:3b:30",
+        "facter_macaddress_eth0": "08:00:27:0f:3b:30",
+        "facter_macaddress_eth1": "08:00:27:72:2f:81",
+        "facter_manufacturer": "innotek GmbH",
+        "facter_memoryfree": "2.96 GB",
+        "facter_memoryfree_mb": "3031.48",
+        "facter_memorysize": "5.83 GB",
+        "facter_memorysize_mb": "5969.09",
+        "facter_memorytotal": "5.83 GB",
+        "facter_mtu_eth0": "1500",
+        "facter_mtu_eth1": "1500",
+        "facter_mtu_lo": "65536",
+        "facter_netmask": "255.255.255.0",
+        "facter_netmask_eth0": "255.255.255.0",
+        "facter_netmask_eth1": "255.255.255.0",
+        "facter_netmask_lo": "255.0.0.0",
+        "facter_network_eth0": "10.0.2.0",
+        "facter_network_eth1": "192.168.10.0",
+        "facter_network_lo": "127.0.0.0",
+        "facter_operatingsystem": "Ubuntu",
+        "facter_operatingsystemrelease": "14.04",
+        "facter_osfamily": "Debian",
+        "facter_path": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games",
+        "facter_physicalprocessorcount": 1,
+        "facter_processor0": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+        "facter_processor1": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+        "facter_processor2": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+        "facter_processor3": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+        "facter_processorcount": "4",
+        "facter_productname": "VirtualBox",
+        "facter_ps": "ps -ef",
+        "facter_puppetversion": "3.4.3",
+        "facter_rubysitedir": "/usr/local/lib/site_ruby/1.9.1",
+        "facter_rubyversion": "1.9.3",
+        "facter_selinux": "false",
+        "facter_serialnumber": "0",
+        "facter_sshdsakey": "AAAAB3NzaC1kc3MAAACBANjh58c6c2YSqQw3zkq7OlgkGfNobH5k/YXCCX6pXjg7tbrTyfuERTLiISghpVRoS/rV9IL+ly7KaNd9QeSjt57Amc0Qm1g5xAegoXPC/zViCnL+fWsy6d4WFCcbbST7R39qzADGSrHyQvB6KKn6SzFsTGCCWGvaMlOl83yfNSWFAAAAFQDjKVrJVALlj1a7UVXfn0L7DMm0iwAAAIEApOkqWvCeYLNSQyKT2T2W6p1L13CGU3KY/gLjmlRVhexgRbSEV2u+9Iito878/XRALyeVNvfeQKKZUfI92XZ8/XnugDKHq2qLpsntUEG4qnj6M3zIGGN5btwQ2aA7jZ2DDK4qZAjVEN5QHFRGVN1rezmffA9gFnAUUianMBSHGVAAAACAMXcnZURkbpmXesbW5U9ETKcnTUA8mSPPZsnFKqxvLng7aOT/ELXYlayDV4T70Yl/toIOUqpd1Cwq1g/sWcqlUPjgZgcNwe/8geRFFklKRsbJIC0TXKTV1iNq/FULI6BPOmDTvbkPuHFV/LJ9CPYSB/31dzfauS2jAUz2DPplmFs=",
+        "facter_sshecdsakey": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGd9HvB3M/A+Z7A3BY4Fwdp7pqhm4VBNL8Wvas12A75BAUZxygZXCbcRbnw8/hpQgYLUsBUeoiqGHEqUcR9zlvQ=",
+        "facter_sshfp_dsa": "SSHFP 2 1 29e151b413dcc980f380f4495d1b09ff149c6afb\nSSHFP 2 2 a27afafac503af9cca8ea32865b527c80925a62f4bf417d1573c719c8f64a691",
+        "facter_sshfp_ecdsa": "SSHFP 3 1 0bb1bc172225d06c287185f32924ac0a8e9189d7\nSSHFP 3 2 2d054761033a256d03e45faa764f5cd81796fc73eb7f70b38a59164e060455b8",
+        "facter_sshfp_rsa": "SSHFP 1 1 17a1b8ae6d99ff42569d7009c0d1cf725df2bfc7\nSSHFP 1 2 1aaf251b93b326f905893b505974b309db358944d7e90260d1916f6910ad9d4b",
+        "facter_sshrsakey": "AAAAB3NzaC1yc2EAAAADAQABAAABAQDraJ6Voth0WlIMgjbgwG/u6ACx9/awXbXAisI4BTla/zUwBD1McL2vApZbdibeGrvLlV34knoh46uu+xh7KnadvOaXx8aSl3d+1utcWqGGMdeHLyLSbV5zYJmBAm03yq92drwQSb+WqGRCmgrpqYosb3YZ0Wk+7zqFIM3GM52K7V1wJXgIUl+fsRPdMPcEO4Eak9VBcWuxVKAtUyJLY9XxKW8JOpSedJZNenAlvhzqNDVwEOw/NDMLUdlQka6iBOJ3kuzv5t0MSYTI8IIlkzJlusLgoA7g7PfQCpyfR7P3Vdh3OIvhPNYS6rfag9wELgGB+w5VMsNDMFUD6K1LNBKn",
+        "facter_swapfree": "0.00 MB",
+        "facter_swapfree_mb": "0.00",
+        "facter_swapsize": "0.00 MB",
+        "facter_swapsize_mb": "0.00",
+        "facter_timezone": "UTC",
+        "facter_type": "Other",
+        "facter_uniqueid": "007f0100",
+        "facter_uptime": "0:20 hours",
+        "facter_uptime_days": 0,
+        "facter_uptime_hours": 0,
+        "facter_uptime_seconds": 1225,
+        "facter_uuid": "0D024071-83CD-43DF-8083-421B81091FFA",
+        "facter_virtual": "virtualbox",
+        "firewalld": {
+            "changed": false,
+            "skipped": true
+        },
+        "first_wait": {
+            "changed": false,
+            "elapsed": 0,
+            "invocation": {
+                "module_args": "port=8086 host=127.0.0.1 state=started timeout=180",
+                "module_name": "wait_for"
+            },
+            "path": null,
+            "port": 8086,
+            "search_regex": null,
+            "state": "started"
+        },
+        "get_url_result": {
+            "changed": false,
+            "skipped": true
+        },
+        "group_names": [
+            "ungrouped"
+        ],
+        "influxdb_host": "{{mini_mon}}",
+        "influxdb_url": "http://{{mini_mon}}:8086",
+        "init": {
+            "changed": true,
+            "cmd": [
+                "cat",
+                "/proc/1/comm"
+            ],
+            "delta": "0:00:00.006104",
+            "end": "2017-02-02 06:07:24.232822",
+            "invocation": {
+                "module_args": "cat /proc/1/comm",
+                "module_name": "command"
+            },
+            "rc": 0,
+            "start": "2017-02-02 06:07:24.226718",
+            "stderr": "",
+            "stdout": "init",
+            "stdout_lines": [
+                "init"
+            ],
+            "warnings": []
+        },
+        "install_result": {
+            "changed": false,
+            "invocation": {
+                "module_args": "pkg=percona-xtradb-cluster-56,percona-toolkit,percona-xtrabackup,python-mysqldb state=latest force=yes",
+                "module_name": "apt"
+            },
+            "item": "percona-xtradb-cluster-56,percona-toolkit,percona-xtrabackup,python-mysqldb"
+        },
+        "inventory_hostname": "mini-mon",
+        "inventory_hostname_short": "mini-mon",
+        "kafka_events_partitions": 4,
+        "kafka_heap_opts": "-Xmx256m",
+        "kafka_hosts": "{{mini_mon}}:9092",
+        "kafka_listen_address": "{{mini_mon}}",
+        "kafka_metrics_partitions": 4,
+        "kafka_replicas": 1,
+        "keystone_admin": "admin",
+        "keystone_admin_password": "admin",
+        "keystone_admin_project": "admin",
+        "keystone_admin_token": "",
+        "keystone_auth_method": "password",
+        "keystone_host": "{{devstack}}",
+        "keystone_password": "password",
+        "keystone_url": "http://{{devstack}}:35357/v3",
+        "keystone_user": "mini-mon",
+        "mini_mon": "192.168.10.4",
+        "module_setup": true,
+        "mon_influxdb_users": [
+            {
+                "password": "password",
+                "username": "mon_api"
+            },
+            {
+                "password": "password",
+                "username": "mon_persister"
+            }
+        ],
+        "mon_mysql_users": [
+            {
+                "password": "password",
+                "username": "notification"
+            },
+            {
+                "password": "password",
+                "username": "monapi"
+            },
+            {
+                "password": "password",
+                "username": "thresh"
+            }
+        ],
+        "monasca_agent_check_frequency": 15,
+        "monasca_agent_password": "password",
+        "monasca_agent_project": "mini-mon",
+        "monasca_agent_user": "monasca-agent",
+        "monasca_api_host": "{{mini_mon}}",
+        "monasca_api_url": "http://{{ monasca_api_host }}:8070/v2.0",
+        "monasca_virtualenv_dir": "/opt/monasca",
+        "mysql_admin_password": "password",
+        "mysql_m_pack": {
+            "changed": false,
+            "skipped": true
+        },
+        "mysql_root_password": "password",
+        "nimbus_host": "{{mini_mon}}",
+        "ohai_block_device": {
+            "loop0": {
+                "removable": "0",
+                "size": "0"
+            },
+            "loop1": {
+                "removable": "0",
+                "size": "0"
+            },
+            "loop2": {
+                "removable": "0",
+                "size": "0"
+            },
+            "loop3": {
+                "removable": "0",
+                "size": "0"
+            },
+            "loop4": {
+                "removable": "0",
+                "size": "0"
+            },
+            "loop5": {
+                "removable": "0",
+                "size": "0"
+            },
+            "loop6": {
+                "removable": "0",
+                "size": "0"
+            },
+            "loop7": {
+                "removable": "0",
+                "size": "0"
+            },
+            "ram0": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram1": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram10": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram11": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram12": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram13": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram14": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram15": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram2": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram3": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram4": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram5": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram6": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram7": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram8": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "ram9": {
+                "removable": "0",
+                "size": "131072"
+            },
+            "sda": {
+                "model": "VBOX HARDDISK",
+                "removable": "0",
+                "rev": "1.0",
+                "size": "83886080",
+                "state": "running",
+                "timeout": "30",
+                "vendor": "ATA"
+            }
+        },
+        "ohai_chef_packages": {
+            "chef": {
+                "chef_root": "/usr/lib/ruby/vendor_ruby",
+                "version": "11.8.2"
+            },
+            "ohai": {
+                "ohai_root": "/usr/lib/ruby/vendor_ruby/ohai",
+                "version": "6.14.0"
+            }
+        },
+        "ohai_command": {
+            "ps": "ps -ef"
+        },
+        "ohai_counters": {
+            "network": {
+                "interfaces": {
+                    "eth0": {
+                        "rx": {
+                            "bytes": "416341873",
+                            "drop": "0",
+                            "errors": "0",
+                            "overrun": "0",
+                            "packets": "422541"
+                        },
+                        "tx": {
+                            "bytes": "9111320",
+                            "carrier": "0",
+                            "collisions": "0",
+                            "drop": "0",
+                            "errors": "0",
+                            "packets": "130576",
+                            "queuelen": "1000"
+                        }
+                    },
+                    "eth1": {
+                        "rx": {
+                            "bytes": "12793431",
+                            "drop": "0",
+                            "errors": "0",
+                            "overrun": "0",
+                            "packets": "10609"
+                        },
+                        "tx": {
+                            "bytes": "246001",
+                            "carrier": "0",
+                            "collisions": "0",
+                            "drop": "0",
+                            "errors": "0",
+                            "packets": "2900",
+                            "queuelen": "1000"
+                        }
+                    },
+                    "lo": {
+                        "rx": {
+                            "bytes": "212647638",
+                            "drop": "0",
+                            "errors": "0",
+                            "overrun": "0",
+                            "packets": "778289"
+                        },
+                        "tx": {
+                            "bytes": "212647638",
+                            "carrier": "0",
+                            "collisions": "0",
+                            "drop": "0",
+                            "errors": "0",
+                            "packets": "778289"
+                        }
+                    }
+                }
+            }
+        },
+        "ohai_cpu": {
+            "0": {
+                "cache_size": "25600 KB",
+                "core_id": "0",
+                "cores": "4",
+                "family": "6",
+                "flags": [
+                    "fpu",
+                    "vme",
+                    "de",
+                    "pse",
+                    "tsc",
+                    "msr",
+                    "pae",
+                    "mce",
+                    "cx8",
+                    "apic",
+                    "sep",
+                    "mtrr",
+                    "pge",
+                    "mca",
+                    "cmov",
+                    "pat",
+                    "pse36",
+                    "clflush",
+                    "mmx",
+                    "fxsr",
+                    "sse",
+                    "sse2",
+                    "ht",
+                    "syscall",
+                    "nx",
+                    "rdtscp",
+                    "lm",
+                    "constant_tsc",
+                    "rep_good",
+                    "nopl",
+                    "xtopology",
+                    "nonstop_tsc",
+                    "pni",
+                    "pclmulqdq",
+                    "ssse3",
+                    "cx16",
+                    "sse4_1",
+                    "sse4_2",
+                    "movbe",
+                    "popcnt",
+                    "xsave",
+                    "avx",
+                    "rdrand",
+                    "lahf_lm",
+                    "abm"
+                ],
+                "mhz": "2300.085",
+                "model": "63",
+                "model_name": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+                "physical_id": "0",
+                "stepping": "2",
+                "vendor_id": "GenuineIntel"
+            },
+            "1": {
+                "cache_size": "25600 KB",
+                "core_id": "1",
+                "cores": "4",
+                "family": "6",
+                "flags": [
+                    "fpu",
+                    "vme",
+                    "de",
+                    "pse",
+                    "tsc",
+                    "msr",
+                    "pae",
+                    "mce",
+                    "cx8",
+                    "apic",
+                    "sep",
+                    "mtrr",
+                    "pge",
+                    "mca",
+                    "cmov",
+                    "pat",
+                    "pse36",
+                    "clflush",
+                    "mmx",
+                    "fxsr",
+                    "sse",
+                    "sse2",
+                    "ht",
+                    "syscall",
+                    "nx",
+                    "rdtscp",
+                    "lm",
+                    "constant_tsc",
+                    "rep_good",
+                    "nopl",
+                    "xtopology",
+                    "nonstop_tsc",
+                    "pni",
+                    "pclmulqdq",
+                    "ssse3",
+                    "cx16",
+                    "sse4_1",
+                    "sse4_2",
+                    "movbe",
+                    "popcnt",
+                    "xsave",
+                    "avx",
+                    "rdrand",
+                    "lahf_lm",
+                    "abm"
+                ],
+                "mhz": "2300.085",
+                "model": "63",
+                "model_name": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+                "physical_id": "0",
+                "stepping": "2",
+                "vendor_id": "GenuineIntel"
+            },
+            "2": {
+                "cache_size": "25600 KB",
+                "core_id": "2",
+                "cores": "4",
+                "family": "6",
+                "flags": [
+                    "fpu",
+                    "vme",
+                    "de",
+                    "pse",
+                    "tsc",
+                    "msr",
+                    "pae",
+                    "mce",
+                    "cx8",
+                    "apic",
+                    "sep",
+                    "mtrr",
+                    "pge",
+                    "mca",
+                    "cmov",
+                    "pat",
+                    "pse36",
+                    "clflush",
+                    "mmx",
+                    "fxsr",
+                    "sse",
+                    "sse2",
+                    "ht",
+                    "syscall",
+                    "nx",
+                    "rdtscp",
+                    "lm",
+                    "constant_tsc",
+                    "rep_good",
+                    "nopl",
+                    "xtopology",
+                    "nonstop_tsc",
+                    "pni",
+                    "pclmulqdq",
+                    "ssse3",
+                    "cx16",
+                    "sse4_1",
+                    "sse4_2",
+                    "movbe",
+                    "popcnt",
+                    "xsave",
+                    "avx",
+                    "rdrand",
+                    "lahf_lm",
+                    "abm"
+                ],
+                "mhz": "2300.085",
+                "model": "63",
+                "model_name": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+                "physical_id": "0",
+                "stepping": "2",
+                "vendor_id": "GenuineIntel"
+            },
+            "3": {
+                "cache_size": "25600 KB",
+                "core_id": "3",
+                "cores": "4",
+                "family": "6",
+                "flags": [
+                    "fpu",
+                    "vme",
+                    "de",
+                    "pse",
+                    "tsc",
+                    "msr",
+                    "pae",
+                    "mce",
+                    "cx8",
+                    "apic",
+                    "sep",
+                    "mtrr",
+                    "pge",
+                    "mca",
+                    "cmov",
+                    "pat",
+                    "pse36",
+                    "clflush",
+                    "mmx",
+                    "fxsr",
+                    "sse",
+                    "sse2",
+                    "ht",
+                    "syscall",
+                    "nx",
+                    "rdtscp",
+                    "lm",
+                    "constant_tsc",
+                    "rep_good",
+                    "nopl",
+                    "xtopology",
+                    "nonstop_tsc",
+                    "pni",
+                    "pclmulqdq",
+                    "ssse3",
+                    "cx16",
+                    "sse4_1",
+                    "sse4_2",
+                    "movbe",
+                    "popcnt",
+                    "xsave",
+                    "avx",
+                    "rdrand",
+                    "lahf_lm",
+                    "abm"
+                ],
+                "mhz": "2300.085",
+                "model": "63",
+                "model_name": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+                "physical_id": "0",
+                "stepping": "2",
+                "vendor_id": "GenuineIntel"
+            },
+            "real": 1,
+            "total": 4
+        },
+        "ohai_current_user": "vagrant",
+        "ohai_dmi": {
+            "dmidecode_version": "2.12"
+        },
+        "ohai_domain": null,
+        "ohai_etc": {
+            "group": {
+                "adm": {
+                    "gid": 4,
+                    "members": [
+                        "syslog",
+                        "ubuntu"
+                    ]
+                },
+                "admin": {
+                    "gid": 110,
+                    "members": []
+                },
+                "audio": {
+                    "gid": 29,
+                    "members": [
+                        "ubuntu"
+                    ]
+                },
+                "backup": {
+                    "gid": 34,
+                    "members": []
+                },
+                "bin": {
+                    "gid": 2,
+                    "members": []
+                },
+                "cdrom": {
+                    "gid": 24,
+                    "members": [
+                        "ubuntu"
+                    ]
+                },
+                "colord": {
+                    "gid": 112,
+                    "members": []
+                },
+                "crontab": {
+                    "gid": 103,
+                    "members": []
+                },
+                "daemon": {
+                    "gid": 1,
+                    "members": []
+                },
+                "dialout": {
+                    "gid": 20,
+                    "members": [
+                        "ubuntu"
+                    ]
+                },
+                "dip": {
+                    "gid": 30,
+                    "members": [
+                        "ubuntu"
+                    ]
+                },
+                "disk": {
+                    "gid": 6,
+                    "members": []
+                },
+                "fax": {
+                    "gid": 21,
+                    "members": []
+                },
+                "floppy": {
+                    "gid": 25,
+                    "members": [
+                        "ubuntu"
+                    ]
+                },
+                "fuse": {
+                    "gid": 105,
+                    "members": []
+                },
+                "games": {
+                    "gid": 60,
+                    "members": []
+                },
+                "gnats": {
+                    "gid": 41,
+                    "members": []
+                },
+                "influxdb": {
+                    "gid": 998,
+                    "members": []
+                },
+                "irc": {
+                    "gid": 39,
+                    "members": []
+                },
+                "kafka": {
+                    "gid": 999,
+                    "members": []
+                },
+                "kmem": {
+                    "gid": 15,
+                    "members": []
+                },
+                "landscape": {
+                    "gid": 109,
+                    "members": []
+                },
+                "libuuid": {
+                    "gid": 101,
+                    "members": []
+                },
+                "list": {
+                    "gid": 38,
+                    "members": []
+                },
+                "lp": {
+                    "gid": 7,
+                    "members": []
+                },
+                "mail": {
+                    "gid": 8,
+                    "members": []
+                },
+                "man": {
+                    "gid": 12,
+                    "members": []
+                },
+                "messagebus": {
+                    "gid": 106,
+                    "members": []
+                },
+                "mlocate": {
+                    "gid": 107,
+                    "members": []
+                },
+                "mon-agent": {
+                    "gid": 992,
+                    "members": []
+                },
+                "monasca": {
+                    "gid": 997,
+                    "members": []
+                },
+                "mysql": {
+                    "gid": 116,
+                    "members": []
+                },
+                "netdev": {
+                    "gid": 102,
+                    "members": [
+                        "ubuntu"
+                    ]
+                },
+                "news": {
+                    "gid": 9,
+                    "members": []
+                },
+                "nogroup": {
+                    "gid": 65534,
+                    "members": []
+                },
+                "operator": {
+                    "gid": 37,
+                    "members": []
+                },
+                "plugdev": {
+                    "gid": 46,
+                    "members": [
+                        "ubuntu"
+                    ]
+                },
+                "postdrop": {
+                    "gid": 119,
+                    "members": []
+                },
+                "postfix": {
+                    "gid": 118,
+                    "members": []
+                },
+                "proxy": {
+                    "gid": 13,
+                    "members": []
+                },
+                "puppet": {
+                    "gid": 114,
+                    "members": []
+                },
+                "root": {
+                    "gid": 0,
+                    "members": []
+                },
+                "sasl": {
+                    "gid": 45,
+                    "members": []
+                },
+                "scanner": {
+                    "gid": 111,
+                    "members": []
+                },
+                "shadow": {
+                    "gid": 42,
+                    "members": []
+                },
+                "src": {
+                    "gid": 40,
+                    "members": []
+                },
+                "ssh": {
+                    "gid": 108,
+                    "members": []
+                },
+                "ssl-cert": {
+                    "gid": 117,
+                    "members": []
+                },
+                "staff": {
+                    "gid": 50,
+                    "members": []
+                },
+                "storm": {
+                    "gid": 996,
+                    "members": []
+                },
+                "sudo": {
+                    "gid": 27,
+                    "members": [
+                        "ubuntu"
+                    ]
+                },
+                "sys": {
+                    "gid": 3,
+                    "members": []
+                },
+                "syslog": {
+                    "gid": 104,
+                    "members": []
+                },
+                "tape": {
+                    "gid": 26,
+                    "members": []
+                },
+                "tty": {
+                    "gid": 5,
+                    "members": []
+                },
+                "ubuntu": {
+                    "gid": 1001,
+                    "members": []
+                },
+                "users": {
+                    "gid": 100,
+                    "members": []
+                },
+                "utmp": {
+                    "gid": 43,
+                    "members": []
+                },
+                "uucp": {
+                    "gid": 10,
+                    "members": []
+                },
+                "vagrant": {
+                    "gid": 1000,
+                    "members": []
+                },
+                "vboxsf": {
+                    "gid": 113,
+                    "members": []
+                },
+                "video": {
+                    "gid": 44,
+                    "members": [
+                        "ubuntu"
+                    ]
+                },
+                "voice": {
+                    "gid": 22,
+                    "members": []
+                },
+                "www-data": {
+                    "gid": 33,
+                    "members": []
+                },
+                "zookeeper": {
+                    "gid": 115,
+                    "members": []
+                }
+            },
+            "passwd": {
+                "backup": {
+                    "dir": "/var/backups",
+                    "gecos": "backup",
+                    "gid": 34,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 34
+                },
+                "bin": {
+                    "dir": "/bin",
+                    "gecos": "bin",
+                    "gid": 2,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 2
+                },
+                "colord": {
+                    "dir": "/var/lib/colord",
+                    "gecos": "colord colour management daemon,,,",
+                    "gid": 112,
+                    "shell": "/bin/false",
+                    "uid": 106
+                },
+                "daemon": {
+                    "dir": "/usr/sbin",
+                    "gecos": "daemon",
+                    "gid": 1,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 1
+                },
+                "games": {
+                    "dir": "/usr/games",
+                    "gecos": "games",
+                    "gid": 60,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 5
+                },
+                "gnats": {
+                    "dir": "/var/lib/gnats",
+                    "gecos": "Gnats Bug-Reporting System (admin)",
+                    "gid": 41,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 41
+                },
+                "influxdb": {
+                    "dir": "/home/influxdb",
+                    "gecos": "",
+                    "gid": 998,
+                    "shell": "",
+                    "uid": 998
+                },
+                "irc": {
+                    "dir": "/var/run/ircd",
+                    "gecos": "ircd",
+                    "gid": 39,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 39
+                },
+                "kafka": {
+                    "dir": "/home/kafka",
+                    "gecos": "",
+                    "gid": 999,
+                    "shell": "",
+                    "uid": 999
+                },
+                "landscape": {
+                    "dir": "/var/lib/landscape",
+                    "gecos": "",
+                    "gid": 109,
+                    "shell": "/bin/false",
+                    "uid": 103
+                },
+                "libuuid": {
+                    "dir": "/var/lib/libuuid",
+                    "gecos": "",
+                    "gid": 101,
+                    "shell": "",
+                    "uid": 100
+                },
+                "list": {
+                    "dir": "/var/list",
+                    "gecos": "Mailing List Manager",
+                    "gid": 38,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 38
+                },
+                "lp": {
+                    "dir": "/var/spool/lpd",
+                    "gecos": "lp",
+                    "gid": 7,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 7
+                },
+                "mail": {
+                    "dir": "/var/mail",
+                    "gecos": "mail",
+                    "gid": 8,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 8
+                },
+                "man": {
+                    "dir": "/var/cache/man",
+                    "gecos": "man",
+                    "gid": 12,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 6
+                },
+                "messagebus": {
+                    "dir": "/var/run/dbus",
+                    "gecos": "",
+                    "gid": 106,
+                    "shell": "/bin/false",
+                    "uid": 102
+                },
+                "mon-agent": {
+                    "dir": "/home/mon-agent",
+                    "gecos": "",
+                    "gid": 992,
+                    "shell": "",
+                    "uid": 992
+                },
+                "mon-api": {
+                    "dir": "/home/mon-api",
+                    "gecos": "",
+                    "gid": 997,
+                    "shell": "",
+                    "uid": 997
+                },
+                "mon-events-api": {
+                    "dir": "/home/mon-events-api",
+                    "gecos": "",
+                    "gid": 997,
+                    "shell": "",
+                    "uid": 991
+                },
+                "mon-notification": {
+                    "dir": "/home/mon-notification",
+                    "gecos": "",
+                    "gid": 997,
+                    "shell": "",
+                    "uid": 995
+                },
+                "mon-persister": {
+                    "dir": "/home/mon-persister",
+                    "gecos": "",
+                    "gid": 997,
+                    "shell": "",
+                    "uid": 996
+                },
+                "mon-thresh": {
+                    "dir": "/home/mon-thresh",
+                    "gecos": "",
+                    "gid": 997,
+                    "shell": "",
+                    "uid": 993
+                },
+                "mysql": {
+                    "dir": "/nonexistent",
+                    "gecos": "MySQL Server,,,",
+                    "gid": 116,
+                    "shell": "/bin/false",
+                    "uid": 110
+                },
+                "news": {
+                    "dir": "/var/spool/news",
+                    "gecos": "news",
+                    "gid": 9,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 9
+                },
+                "nobody": {
+                    "dir": "/nonexistent",
+                    "gecos": "nobody",
+                    "gid": 65534,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 65534
+                },
+                "pollinate": {
+                    "dir": "/var/cache/pollinate",
+                    "gecos": "",
+                    "gid": 1,
+                    "shell": "/bin/false",
+                    "uid": 105
+                },
+                "postfix": {
+                    "dir": "/var/spool/postfix",
+                    "gecos": "",
+                    "gid": 118,
+                    "shell": "/bin/false",
+                    "uid": 111
+                },
+                "proxy": {
+                    "dir": "/bin",
+                    "gecos": "proxy",
+                    "gid": 13,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 13
+                },
+                "puppet": {
+                    "dir": "/var/lib/puppet",
+                    "gecos": "Puppet configuration management daemon,,,",
+                    "gid": 114,
+                    "shell": "/bin/false",
+                    "uid": 108
+                },
+                "root": {
+                    "dir": "/root",
+                    "gecos": "root",
+                    "gid": 0,
+                    "shell": "/bin/bash",
+                    "uid": 0
+                },
+                "sshd": {
+                    "dir": "/var/run/sshd",
+                    "gecos": "",
+                    "gid": 65534,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 104
+                },
+                "statd": {
+                    "dir": "/var/lib/nfs",
+                    "gecos": "",
+                    "gid": 65534,
+                    "shell": "/bin/false",
+                    "uid": 107
+                },
+                "storm": {
+                    "dir": "/home/storm",
+                    "gecos": "",
+                    "gid": 996,
+                    "shell": "",
+                    "uid": 994
+                },
+                "sync": {
+                    "dir": "/bin",
+                    "gecos": "sync",
+                    "gid": 65534,
+                    "shell": "/bin/sync",
+                    "uid": 4
+                },
+                "sys": {
+                    "dir": "/dev",
+                    "gecos": "sys",
+                    "gid": 3,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 3
+                },
+                "syslog": {
+                    "dir": "/home/syslog",
+                    "gecos": "",
+                    "gid": 104,
+                    "shell": "/bin/false",
+                    "uid": 101
+                },
+                "ubuntu": {
+                    "dir": "/home/ubuntu",
+                    "gecos": "Ubuntu",
+                    "gid": 1001,
+                    "shell": "/bin/bash",
+                    "uid": 1001
+                },
+                "uucp": {
+                    "dir": "/var/spool/uucp",
+                    "gecos": "uucp",
+                    "gid": 10,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 10
+                },
+                "vagrant": {
+                    "dir": "/home/vagrant",
+                    "gecos": "",
+                    "gid": 1000,
+                    "shell": "/bin/bash",
+                    "uid": 1000
+                },
+                "www-data": {
+                    "dir": "/var/www",
+                    "gecos": "www-data",
+                    "gid": 33,
+                    "shell": "/usr/sbin/nologin",
+                    "uid": 33
+                },
+                "zookeeper": {
+                    "dir": "/var/lib/zookeeper",
+                    "gecos": "ZooKeeper,,,",
+                    "gid": 115,
+                    "shell": "/bin/false",
+                    "uid": 109
+                }
+            }
+        },
+        "ohai_filesystem": {
+            "/dev/sda1": {
+                "fs_type": "ext4",
+                "kb_available": "36798868",
+                "kb_size": "41251136",
+                "kb_used": "2716356",
+                "label": "cloudimg-rootfs",
+                "mount": "/",
+                "mount_options": [
+                    "rw"
+                ],
+                "percent_used": "7%",
+                "uuid": "a402661a-0bbd-4f0a-8a8c-4caff3228cdd"
+            },
+            "devpts": {
+                "fs_type": "devpts",
+                "mount": "/dev/pts",
+                "mount_options": [
+                    "rw",
+                    "noexec",
+                    "nosuid",
+                    "gid=5",
+                    "mode=0620"
+                ]
+            },
+            "none": {
+                "fs_type": "pstore",
+                "kb_available": "219499824",
+                "kb_size": "464070456",
+                "kb_used": "244570632",
+                "mount": "/sys/fs/pstore",
+                "mount_options": [
+                    "rw"
+                ],
+                "percent_used": "53%"
+            },
+            "proc": {
+                "fs_type": "proc",
+                "mount": "/proc",
+                "mount_options": [
+                    "rw",
+                    "noexec",
+                    "nosuid",
+                    "nodev"
+                ]
+            },
+            "rootfs": {
+                "fs_type": "rootfs",
+                "mount": "/",
+                "mount_options": [
+                    "rw"
+                ]
+            },
+            "rpc_pipefs": {
+                "fs_type": "rpc_pipefs",
+                "mount": "/run/rpc_pipefs",
+                "mount_options": [
+                    "rw"
+                ]
+            },
+            "sysfs": {
+                "fs_type": "sysfs",
+                "mount": "/sys",
+                "mount_options": [
+                    "rw",
+                    "noexec",
+                    "nosuid",
+                    "nodev"
+                ]
+            },
+            "systemd": {
+                "fs_type": "cgroup",
+                "mount": "/sys/fs/cgroup/systemd",
+                "mount_options": [
+                    "rw",
+                    "noexec",
+                    "nosuid",
+                    "nodev",
+                    "none",
+                    "name=systemd"
+                ]
+            },
+            "tmpfs": {
+                "fs_type": "tmpfs",
+                "kb_available": "610864",
+                "kb_size": "611236",
+                "kb_used": "372",
+                "mount": "/run",
+                "mount_options": [
+                    "rw",
+                    "noexec",
+                    "nosuid",
+                    "size=10%",
+                    "mode=0755"
+                ],
+                "percent_used": "1%"
+            },
+            "udev": {
+                "fs_type": "devtmpfs",
+                "kb_available": "3051184",
+                "kb_size": "3051196",
+                "kb_used": "12",
+                "mount": "/dev",
+                "mount_options": [
+                    "rw",
+                    "mode=0755"
+                ],
+                "percent_used": "1%"
+            },
+            "vagrant": {
+                "fs_type": "vboxsf",
+                "mount": "/vagrant",
+                "mount_options": [
+                    "uid=1000",
+                    "gid=1000",
+                    "rw"
+                ]
+            },
+            "vagrant_home": {
+                "fs_type": "vboxsf",
+                "mount": "/vagrant_home",
+                "mount_options": [
+                    "uid=1000",
+                    "gid=1000",
+                    "rw"
+                ]
+            }
+        },
+        "ohai_fqdn": "mini-mon",
+        "ohai_hostname": "mini-mon",
+        "ohai_idletime": "1 hours 02 minutes 46 seconds",
+        "ohai_idletime_seconds": 3766,
+        "ohai_ipaddress": "10.0.2.15",
+        "ohai_kernel": {
+            "machine": "x86_64",
+            "modules": {
+                "ahci": {
+                    "refcount": "1",
+                    "size": "34091"
+                },
+                "auth_rpcgss": {
+                    "refcount": "1",
+                    "size": "59309"
+                },
+                "crc32_pclmul": {
+                    "refcount": "0",
+                    "size": "13113"
+                },
+                "crct10dif_pclmul": {
+                    "refcount": "0",
+                    "size": "14289"
+                },
+                "cryptd": {
+                    "refcount": "1",
+                    "size": "20359"
+                },
+                "dm_crypt": {
+                    "refcount": "0",
+                    "size": "23177"
+                },
+                "e1000": {
+                    "refcount": "0",
+                    "size": "145227"
+                },
+                "fscache": {
+                    "refcount": "1",
+                    "size": "63988"
+                },
+                "ghash_clmulni_intel": {
+                    "refcount": "0",
+                    "size": "13302"
+                },
+                "ip_tables": {
+                    "refcount": "1",
+                    "size": "27116"
+                },
+                "iptable_filter": {
+                    "refcount": "1",
+                    "size": "12810"
+                },
+                "joydev": {
+                    "refcount": "0",
+                    "size": "17381"
+                },
+                "libahci": {
+                    "refcount": "1",
+                    "size": "32716"
+                },
+                "lockd": {
+                    "refcount": "2",
+                    "size": "93913"
+                },
+                "nfs": {
+                    "refcount": "0",
+                    "size": "240815"
+                },
+                "nfs_acl": {
+                    "refcount": "1",
+                    "size": "12837"
+                },
+                "nfsd": {
+                    "refcount": "2",
+                    "size": "284396"
+                },
+                "psmouse": {
+                    "refcount": "0",
+                    "size": "106692"
+                },
+                "serio_raw": {
+                    "refcount": "0",
+                    "size": "13462"
+                },
+                "sunrpc": {
+                    "refcount": "6",
+                    "size": "289217"
+                },
+                "vboxguest": {
+                    "refcount": "2",
+                    "size": "249035"
+                },
+                "vboxsf": {
+                    "refcount": "2",
+                    "size": "43798"
+                },
+                "video": {
+                    "refcount": "0",
+                    "size": "19476"
+                },
+                "x_tables": {
+                    "refcount": "4",
+                    "size": "34802"
+                },
+                "xt_comment": {
+                    "refcount": "1",
+                    "size": "12504"
+                },
+                "xt_tcpudp": {
+                    "refcount": "1",
+                    "size": "12884"
+                }
+            },
+            "name": "Linux",
+            "os": "GNU/Linux",
+            "release": "3.13.0-107-generic",
+            "version": "#154-Ubuntu SMP Tue Dec 20 09:57:27 UTC 2016"
+        },
+        "ohai_keys": {
+            "ssh": {
+                "host_dsa_public": "AAAAB3NzaC1kc3MAAACBANjh58c6c2YSqQw3zkq7OlgkGfNobH5k/YXCCX6pXjg7tbrTyfuERTLiISghpVRoS/rV9IL+ly7KaNd9QeSjt57Amc0Qm1g5xAegoXPC/zViCnL+fWsy6d4WFCcbbST7R39qzADGSrHyQvB6KKn6SzFsTGCCWGvaMlOl83yfNSWFAAAAFQDjKVrJVALlj1a7UVXfn0L7DMm0iwAAAIEApOkqWvCeYLNSQyKT2T2W6p1L13CGU3KY/gLjmlRVhexgRbSEV2u+9Iito878/XRALyeVNvfeQKKZUfI92XZ8/XnugDKHq2qLpsntUEG4qnj6M3zIGGN5btwQ2aA7jZ2DDK4qZAjVEN5QHFRGVN1rezmffA9gFnAUUianMBSHGVAAAACAMXcnZURkbpmXesbW5U9ETKcnTUA8mSPPZsnFKqxvLng7aOT/ELXYlayDV4T70Yl/toIOUqpd1Cwq1g/sWcqlUPjgZgcNwe/8geRFFklKRsbJIC0TXKTV1iNq/FULI6BPOmDTvbkPuHFV/LJ9CPYSB/31dzfauS2jAUz2DPplmFs=",
+                "host_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABAQDraJ6Voth0WlIMgjbgwG/u6ACx9/awXbXAisI4BTla/zUwBD1McL2vApZbdibeGrvLlV34knoh46uu+xh7KnadvOaXx8aSl3d+1utcWqGGMdeHLyLSbV5zYJmBAm03yq92drwQSb+WqGRCmgrpqYosb3YZ0Wk+7zqFIM3GM52K7V1wJXgIUl+fsRPdMPcEO4Eak9VBcWuxVKAtUyJLY9XxKW8JOpSedJZNenAlvhzqNDVwEOw/NDMLUdlQka6iBOJ3kuzv5t0MSYTI8IIlkzJlusLgoA7g7PfQCpyfR7P3Vdh3OIvhPNYS6rfag9wELgGB+w5VMsNDMFUD6K1LNBKn"
+            }
+        },
+        "ohai_languages": {
+            "java": {
+                "hotspot": {
+                    "build": "24.121-b00, mixed mode",
+                    "name": "OpenJDK 64-Bit Server VM"
+                },
+                "runtime": {
+                    "build": "7u121-2.6.8-1ubuntu0.14.04.1",
+                    "name": "OpenJDK Runtime Environment (IcedTea 2.6.8)"
+                },
+                "version": "1.7.0_121"
+            },
+            "perl": {
+                "archname": "x86_64-linux-gnu-thread-multi",
+                "version": "5.18.2"
+            },
+            "python": {
+                "builddate": "Oct 26 2016, 20:30:19",
+                "version": "2.7.6"
+            },
+            "ruby": {
+                "bin_dir": "/usr/bin",
+                "gem_bin": "/usr/bin/gem1.9.1",
+                "gems_dir": "/var/lib/gems/1.9.1",
+                "host": "x86_64-pc-linux-gnu",
+                "host_cpu": "x86_64",
+                "host_os": "linux-gnu",
+                "host_vendor": "pc",
+                "platform": "x86_64-linux",
+                "release_date": "2013-11-22",
+                "ruby_bin": "/usr/bin/ruby1.9.1",
+                "target": "x86_64-pc-linux-gnu",
+                "target_cpu": "x86_64",
+                "target_os": "linux",
+                "target_vendor": "pc",
+                "version": "1.9.3"
+            }
+        },
+        "ohai_lsb": {
+            "codename": "trusty",
+            "description": "Ubuntu 14.04.5 LTS",
+            "id": "Ubuntu",
+            "release": "14.04"
+        },
+        "ohai_macaddress": "08:00:27:0F:3B:30",
+        "ohai_memory": {
+            "active": "3599260kB",
+            "anon_pages": "2781600kB",
+            "bounce": "0kB",
+            "buffers": "57704kB",
+            "cached": "1541064kB",
+            "commit_limit": "3056172kB",
+            "committed_as": "4852420kB",
+            "dirty": "24996kB",
+            "free": "1526132kB",
+            "inactive": "781060kB",
+            "mapped": "75980kB",
+            "nfs_unstable": "0kB",
+            "page_tables": "16012kB",
+            "slab": "129408kB",
+            "slab_reclaimable": "108000kB",
+            "slab_unreclaim": "21408kB",
+            "swap": {
+                "cached": "0kB",
+                "free": "0kB",
+                "total": "0kB"
+            },
+            "total": "6112344kB",
+            "vmalloc_chunk": "34359630056kB",
+            "vmalloc_total": "34359738367kB",
+            "vmalloc_used": "62348kB",
+            "writeback": "0kB"
+        },
+        "ohai_network": {
+            "default_gateway": "10.0.2.2",
+            "default_interface": "eth0",
+            "interfaces": {
+                "eth0": {
+                    "addresses": {
+                        "08:00:27:0F:3B:30": {
+                            "family": "lladdr"
+                        },
+                        "10.0.2.15": {
+                            "broadcast": "10.0.2.255",
+                            "family": "inet",
+                            "netmask": "255.255.255.0",
+                            "prefixlen": "24",
+                            "scope": "Global"
+                        },
+                        "fe80::a00:27ff:fe0f:3b30": {
+                            "family": "inet6",
+                            "prefixlen": "64",
+                            "scope": "Link"
+                        }
+                    },
+                    "arp": {
+                        "10.0.2.2": "52:54:00:12:35:02",
+                        "10.0.2.3": "52:54:00:12:35:03"
+                    },
+                    "encapsulation": "Ethernet",
+                    "flags": [
+                        "BROADCAST",
+                        "MULTICAST",
+                        "UP",
+                        "LOWER_UP"
+                    ],
+                    "mtu": "1500",
+                    "number": "0",
+                    "routes": [
+                        {
+                            "destination": "default",
+                            "family": "inet",
+                            "via": "10.0.2.2"
+                        },
+                        {
+                            "destination": "10.0.2.0/24",
+                            "family": "inet",
+                            "proto": "kernel",
+                            "scope": "link",
+                            "src": "10.0.2.15"
+                        },
+                        {
+                            "destination": "fe80::/64",
+                            "family": "inet6",
+                            "metric": "256",
+                            "proto": "kernel"
+                        }
+                    ],
+                    "state": "up",
+                    "type": "eth"
+                },
+                "eth1": {
+                    "addresses": {
+                        "08:00:27:72:2F:81": {
+                            "family": "lladdr"
+                        },
+                        "192.168.10.4": {
+                            "broadcast": "192.168.10.255",
+                            "family": "inet",
+                            "netmask": "255.255.255.0",
+                            "prefixlen": "24",
+                            "scope": "Global"
+                        },
+                        "fe80::a00:27ff:fe72:2f81": {
+                            "family": "inet6",
+                            "prefixlen": "64",
+                            "scope": "Link"
+                        }
+                    },
+                    "arp": {
+                        "192.168.10.5": "08:00:27:48:73:0e"
+                    },
+                    "encapsulation": "Ethernet",
+                    "flags": [
+                        "BROADCAST",
+                        "MULTICAST",
+                        "UP",
+                        "LOWER_UP"
+                    ],
+                    "mtu": "1500",
+                    "number": "1",
+                    "routes": [
+                        {
+                            "destination": "192.168.10.0/24",
+                            "family": "inet",
+                            "proto": "kernel",
+                            "scope": "link",
+                            "src": "192.168.10.4"
+                        },
+                        {
+                            "destination": "fe80::/64",
+                            "family": "inet6",
+                            "metric": "256",
+                            "proto": "kernel"
+                        }
+                    ],
+                    "state": "up",
+                    "type": "eth"
+                },
+                "lo": {
+                    "addresses": {
+                        "127.0.0.1": {
+                            "family": "inet",
+                            "netmask": "255.0.0.0",
+                            "prefixlen": "8",
+                            "scope": "Node"
+                        },
+                        "::1": {
+                            "family": "inet6",
+                            "prefixlen": "128",
+                            "scope": "Node"
+                        }
+                    },
+                    "encapsulation": "Loopback",
+                    "flags": [
+                        "LOOPBACK",
+                        "UP",
+                        "LOWER_UP"
+                    ],
+                    "mtu": "65536",
+                    "state": "unknown"
+                }
+            },
+            "listeners": {
+                "tcp": {
+                    "111": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "17123": {
+                        "address": "127.0.0.1",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "2181": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "22": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "25": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "3306": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "35740": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "36833": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "48443": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "50062": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "54832": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "57983": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "6627": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "6701": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "6702": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "8070": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "8072": {
+                        "address": "192.168.10.4",
+                        "pid": 0
+                    },
+                    "8081": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "8083": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "8086": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "8088": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "8090": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "8091": {
+                        "address": "*",
+                        "name": "",
+                        "pid": 0
+                    },
+                    "9092": {
+                        "address": "::ffff:192.168.10.4",
+                        "name": "",
+                        "pid": 0
+                    }
+                }
+            }
+        },
+        "ohai_ohai_time": 1486015651.1225975,
+        "ohai_os": "linux",
+        "ohai_os_version": "3.13.0-107-generic",
+        "ohai_platform": "ubuntu",
+        "ohai_platform_family": "debian",
+        "ohai_platform_version": "14.04",
+        "ohai_uptime": "20 minutes 25 seconds",
+        "ohai_uptime_seconds": 1225,
+        "ohai_virtualization": {
+            "role": "guest",
+            "system": "vbox"
+        },
+        "percona_package": "percona-xtradb-cluster-56",
+        "place_key": {
+            "changed": false,
+            "skipped": true
+        },
+        "private_key_info": {
+            "changed": false,
+            "skipped": true
+        },
+        "public_key_info": {
+            "changed": false,
+            "skipped": true
+        },
+        "result": {
+            "attempts": 0,
+            "changed": true,
+            "cmd": [
+                "/opt/influxdb/influxdb_setup.py"
+            ],
+            "delta": "0:00:00.049326",
+            "end": "2017-02-02 06:02:47.420709",
+            "invocation": {
+                "module_args": "/opt/influxdb/influxdb_setup.py",
+                "module_name": "command"
+            },
+            "rc": 0,
+            "start": "2017-02-02 06:02:47.371383",
+            "stderr": "",
+            "stdout": "",
+            "stdout_lines": [],
+            "warnings": []
+        },
+        "running_result": {
+            "changed": false,
+            "skipped": true
+        },
+        "smoke": {
+            "changed": true,
+            "cmd": [
+                "/opt/monasca/bin/python",
+                "/opt/monasca//hpcloud-mon-monasca-ci-59283f2//tests/smoke/smoke.py"
+            ],
+            "delta": "0:00:46.453845",
+            "end": "2017-02-02 06:06:06.037312",
+            "invocation": {
+                "module_args": "/opt/monasca/bin/python /opt/monasca//hpcloud-mon-monasca-ci-59283f2//tests/smoke/smoke.py",
+                "module_name": "command"
+            },
+            "rc": 0,
+            "start": "2017-02-02 06:05:19.583467",
+            "stderr": "",
+            "stdout": "Using default Configuration\n*****VERIFYING HOST ENVIRONMENT*****\nAll Mini-Mon Processes Found\n*****BEGIN TEST*****\nGetting metrics for load.avg_1_min{'hostname': 'mini-mon'} \nGetting metrics for monasca.sent_smtp_count{'hostname': 'mini-mon'} \nCreating notification\nCreating alarm definition\nWaiting for alarm to be created for Alarm Definition 51734cbf-4f86-405b-8a17-2790bd39035b\nAlarm was created in 5 seconds\nWaiting for alarm to change state from UNDETERMINED\nAlarm state changed to ALARM in 8 seconds\nChanging Alarm state to OK\nWaiting for alarm to change state from OK\nAlarm state changed to ALARM in 2 seconds\nReceived 3 metrics in 35.0010178089 seconds\nChecking Alarm History\nAlarm History is OK\nChecking Notification Engine\nReceived email notifications as expected\nWaiting for statsd metrics\nReceived 1 metrics for monasca.sent_smtp_count{'hostname': 'mini-mon'} in 41.3632619381 seconds\n*****TEST COMPLETE*****",
+            "stdout_lines": [
+                "Using default Configuration",
+                "*****VERIFYING HOST ENVIRONMENT*****",
+                "All Mini-Mon Processes Found",
+                "*****BEGIN TEST*****",
+                "Getting metrics for load.avg_1_min{'hostname': 'mini-mon'} ",
+                "Getting metrics for monasca.sent_smtp_count{'hostname': 'mini-mon'} ",
+                "Creating notification",
+                "Creating alarm definition",
+                "Waiting for alarm to be created for Alarm Definition 51734cbf-4f86-405b-8a17-2790bd39035b",
+                "Alarm was created in 5 seconds",
+                "Waiting for alarm to change state from UNDETERMINED",
+                "Alarm state changed to ALARM in 8 seconds",
+                "Changing Alarm state to OK",
+                "Waiting for alarm to change state from OK",
+                "Alarm state changed to ALARM in 2 seconds",
+                "Received 3 metrics in 35.0010178089 seconds",
+                "Checking Alarm History",
+                "Alarm History is OK",
+                "Checking Notification Engine",
+                "Received email notifications as expected",
+                "Waiting for statsd metrics",
+                "Received 1 metrics for monasca.sent_smtp_count{'hostname': 'mini-mon'} in 41.3632619381 seconds",
+                "*****TEST COMPLETE*****"
+            ],
+            "warnings": []
+        },
+        "smoke2": {
+            "changed": true,
+            "cmd": [
+                "/opt/monasca/bin/python",
+                "/opt/monasca//hpcloud-mon-monasca-ci-59283f2//tests/smoke/smoke2.py"
+            ],
+            "delta": "0:00:08.695365",
+            "end": "2017-02-02 06:05:19.370980",
+            "invocation": {
+                "module_args": "/opt/monasca/bin/python /opt/monasca//hpcloud-mon-monasca-ci-59283f2//tests/smoke/smoke2.py",
+                "module_name": "command"
+            },
+            "rc": 0,
+            "start": "2017-02-02 06:05:10.675615",
+            "stderr": "",
+            "stdout": "*******VERIFYING ZOOKEEPER NODE(S)*******\nSuccessful.\n********VERIFYING KAFKA NODE(S)********\nSuccessful.\n*****VERIFYING HOST SERVICES/PROCESSES*****\nSuccessful. All Processes are running.\n********VERIFYING MYSQL NODE********\nSuccessful.\n********VERIFYING INFLUXDB NODE********\nSuccessful.\n*****VERIFYING KEYSTONE*****\nSuccessful.\n********VERIFYING REST API********\nSuccessful.\n********VERIFYING STORM********\nSuccessful.\n*****TESTS SUCCEEDED*****",
+            "stdout_lines": [
+                "*******VERIFYING ZOOKEEPER NODE(S)*******",
+                "Successful.",
+                "********VERIFYING KAFKA NODE(S)********",
+                "Successful.",
+                "*****VERIFYING HOST SERVICES/PROCESSES*****",
+                "Successful. All Processes are running.",
+                "********VERIFYING MYSQL NODE********",
+                "Successful.",
+                "********VERIFYING INFLUXDB NODE********",
+                "Successful.",
+                "*****VERIFYING KEYSTONE*****",
+                "Successful.",
+                "********VERIFYING REST API********",
+                "Successful.",
+                "********VERIFYING STORM********",
+                "Successful.",
+                "*****TESTS SUCCEEDED*****"
+            ],
+            "warnings": []
+        },
+        "smtp_host": "localhost",
+        "sql_file_status": {
+            "changed": false,
+            "msg": "All items completed",
+            "results": [
+                {
+                    "changed": false,
+                    "skipped": true
+                },
+                {
+                    "changed": false,
+                    "skipped": true
+                }
+            ]
+        },
+        "sql_template_status": {
+            "changed": false,
+            "msg": "All items completed",
+            "results": [
+                {
+                    "changed": false,
+                    "skipped": true
+                }
+            ]
+        },
+        "status": {
+            "changed": false,
+            "skipped": true
+        },
+        "status_start": {
+            "changed": false,
+            "skipped": true
+        },
+        "status_stop": {
+            "changed": false,
+            "skipped": true
+        },
+        "storm_logs_dir": {
+            "changed": false,
+            "invocation": {
+                "module_args": "path=/opt/storm/current/logs get_md5=False",
+                "module_name": "stat"
+            },
+            "stat": {
+                "atime": 1486014987.2679875,
+                "ctime": 1486014975.631988,
+                "dev": 2049,
+                "exists": true,
+                "gid": 0,
+                "inode": 268974,
+                "isblk": false,
+                "ischr": false,
+                "isdir": false,
+                "isfifo": false,
+                "isgid": false,
+                "islnk": true,
+                "isreg": false,
+                "issock": false,
+                "isuid": false,
+                "lnk_source": "/var/log/storm",
+                "mode": "0777",
+                "mtime": 1486014975.631988,
+                "nlink": 1,
+                "pw_name": "root",
+                "rgrp": true,
+                "roth": true,
+                "rusr": true,
+                "size": 14,
+                "uid": 0,
+                "wgrp": true,
+                "woth": true,
+                "wusr": true,
+                "xgrp": true,
+                "xoth": true,
+                "xusr": true
+            }
+        },
+        "storm_worker_ports": [
+            6701,
+            6702
+        ],
+        "tarpath": {
+            "changed": true,
+            "cmd": [
+                "tar",
+                "-tzf",
+                "/opt/monasca//monasca-ci.tar.gz"
+            ],
+            "delta": "0:00:00.008314",
+            "end": "2017-02-02 06:05:08.237006",
+            "invocation": {
+                "module_args": "tar -tzf \"/opt/monasca//monasca-ci.tar.gz\"",
+                "module_name": "command"
+            },
+            "rc": 0,
+            "start": "2017-02-02 06:05:08.228692",
+            "stderr": "",
+            "stdout": "hpcloud-mon-monasca-ci-59283f2/\nhpcloud-mon-monasca-ci-59283f2/.gitignore\nhpcloud-mon-monasca-ci-59283f2/README.md\nhpcloud-mon-monasca-ci-59283f2/jjb/\nhpcloud-mon-monasca-ci-59283f2/jjb/README.md\nhpcloud-mon-monasca-ci-59283f2/jjb/build/\nhpcloud-mon-monasca-ci-59283f2/jjb/build/ansible.yaml\nhpcloud-mon-monasca-ci-59283f2/jjb/build/defaults.yaml\nhpcloud-mon-monasca-ci-59283f2/jjb/build/java.yaml\nhpcloud-mon-monasca-ci-59283f2/jjb/build/macros.yaml\nhpcloud-mon-monasca-ci-59283f2/jjb/build/monasca-common.yaml\nhpcloud-mon-monasca-ci-59283f2/jjb/build/python.yaml\nhpcloud-mon-monasca-ci-59283f2/jjb/system/\nhpcloud-mon-monasca-ci-59283f2/jjb/system/3-node.yaml\nhpcloud-mon-monasca-ci-59283f2/jjb/system/defaults.yaml\nhpcloud-mon-monasca-ci-59283f2/jjb/system/macros.yaml\nhpcloud-mon-monasca-ci-59283f2/jjb/system/single-node.yaml\nhpcloud-mon-monasca-ci-59283f2/system/\nhpcloud-mon-monasca-ci-59283f2/system/3-node/\nhpcloud-mon-monasca-ci-59283f2/system/3-node/ansible.cfg\nhpcloud-mon-monasca-ci-59283f2/system/3-node/callback_plugins\nhpcloud-mon-monasca-ci-59283f2/system/3-node/group_vars/\nhpcloud-mon-monasca-ci-59283f2/system/3-node/group_vars/monasca\nhpcloud-mon-monasca-ci-59283f2/system/3-node/group_vars/monasca_master\nhpcloud-mon-monasca-ci-59283f2/system/3-node/group_vars/monasca_workers\nhpcloud-mon-monasca-ci-59283f2/system/3-node/site.yml\nhpcloud-mon-monasca-ci-59283f2/system/ansible.cfg\nhpcloud-mon-monasca-ci-59283f2/system/callback_plugins/\nhpcloud-mon-monasca-ci-59283f2/system/callback_plugins/profile_tasks.py\nhpcloud-mon-monasca-ci-59283f2/system/docker_inventory.j2\nhpcloud-mon-monasca-ci-59283f2/system/docker_ip.sh\nhpcloud-mon-monasca-ci-59283f2/system/docker_start.yml\nhpcloud-mon-monasca-ci-59283f2/system/docker_stop.yml\nhpcloud-mon-monasca-ci-59283f2/system/hosts\nhpcloud-mon-monasca-ci-59283f2/system/requirements.yml\nhpcloud-mon-monasca-ci-59283f2/system/single-node/\nhpcloud-mon-monasca-ci-59283f2/system/single-node/ansible.cfg\nhpcloud-mon-monasca-ci-59283f2/system/single-node/callback_plugins\nhpcloud-mon-monasca-ci-59283f2/system/single-node/group_vars/\nhpcloud-mon-monasca-ci-59283f2/system/single-node/group_vars/all\nhpcloud-mon-monasca-ci-59283f2/system/single-node/site.yml\nhpcloud-mon-monasca-ci-59283f2/system/tests/\nhpcloud-mon-monasca-ci-59283f2/system/tests/api_func.yml\nhpcloud-mon-monasca-ci-59283f2/system/tests/smoke.yml\nhpcloud-mon-monasca-ci-59283f2/system/tests/tests.yml\nhpcloud-mon-monasca-ci-59283f2/system/uncompress_roles.sh\nhpcloud-mon-monasca-ci-59283f2/tests/\nhpcloud-mon-monasca-ci-59283f2/tests/api_func_check.py\nhpcloud-mon-monasca-ci-59283f2/tests/api_func_check.yml.j2\nhpcloud-mon-monasca-ci-59283f2/tests/smoke/\nhpcloud-mon-monasca-ci-59283f2/tests/smoke/cli_wrapper.py\nhpcloud-mon-monasca-ci-59283f2/tests/smoke/smoke.py\nhpcloud-mon-monasca-ci-59283f2/tests/smoke/smoke2.py\nhpcloud-mon-monasca-ci-59283f2/tests/smoke/smoke2_configs.py.j2\nhpcloud-mon-monasca-ci-59283f2/tests/smoke/smoke_configs.py\nhpcloud-mon-monasca-ci-59283f2/tests/smoke/utils.py",
+            "stdout_lines": [
+                "hpcloud-mon-monasca-ci-59283f2/",
+                "hpcloud-mon-monasca-ci-59283f2/.gitignore",
+                "hpcloud-mon-monasca-ci-59283f2/README.md",
+                "hpcloud-mon-monasca-ci-59283f2/jjb/",
+                "hpcloud-mon-monasca-ci-59283f2/jjb/README.md",
+                "hpcloud-mon-monasca-ci-59283f2/jjb/build/",
+                "hpcloud-mon-monasca-ci-59283f2/jjb/build/ansible.yaml",
+                "hpcloud-mon-monasca-ci-59283f2/jjb/build/defaults.yaml",
+                "hpcloud-mon-monasca-ci-59283f2/jjb/build/java.yaml",
+                "hpcloud-mon-monasca-ci-59283f2/jjb/build/macros.yaml",
+                "hpcloud-mon-monasca-ci-59283f2/jjb/build/monasca-common.yaml",
+                "hpcloud-mon-monasca-ci-59283f2/jjb/build/python.yaml",
+                "hpcloud-mon-monasca-ci-59283f2/jjb/system/",
+                "hpcloud-mon-monasca-ci-59283f2/jjb/system/3-node.yaml",
+                "hpcloud-mon-monasca-ci-59283f2/jjb/system/defaults.yaml",
+                "hpcloud-mon-monasca-ci-59283f2/jjb/system/macros.yaml",
+                "hpcloud-mon-monasca-ci-59283f2/jjb/system/single-node.yaml",
+                "hpcloud-mon-monasca-ci-59283f2/system/",
+                "hpcloud-mon-monasca-ci-59283f2/system/3-node/",
+                "hpcloud-mon-monasca-ci-59283f2/system/3-node/ansible.cfg",
+                "hpcloud-mon-monasca-ci-59283f2/system/3-node/callback_plugins",
+                "hpcloud-mon-monasca-ci-59283f2/system/3-node/group_vars/",
+                "hpcloud-mon-monasca-ci-59283f2/system/3-node/group_vars/monasca",
+                "hpcloud-mon-monasca-ci-59283f2/system/3-node/group_vars/monasca_master",
+                "hpcloud-mon-monasca-ci-59283f2/system/3-node/group_vars/monasca_workers",
+                "hpcloud-mon-monasca-ci-59283f2/system/3-node/site.yml",
+                "hpcloud-mon-monasca-ci-59283f2/system/ansible.cfg",
+                "hpcloud-mon-monasca-ci-59283f2/system/callback_plugins/",
+                "hpcloud-mon-monasca-ci-59283f2/system/callback_plugins/profile_tasks.py",
+                "hpcloud-mon-monasca-ci-59283f2/system/docker_inventory.j2",
+                "hpcloud-mon-monasca-ci-59283f2/system/docker_ip.sh",
+                "hpcloud-mon-monasca-ci-59283f2/system/docker_start.yml",
+                "hpcloud-mon-monasca-ci-59283f2/system/docker_stop.yml",
+                "hpcloud-mon-monasca-ci-59283f2/system/hosts",
+                "hpcloud-mon-monasca-ci-59283f2/system/requirements.yml",
+                "hpcloud-mon-monasca-ci-59283f2/system/single-node/",
+                "hpcloud-mon-monasca-ci-59283f2/system/single-node/ansible.cfg",
+                "hpcloud-mon-monasca-ci-59283f2/system/single-node/callback_plugins",
+                "hpcloud-mon-monasca-ci-59283f2/system/single-node/group_vars/",
+                "hpcloud-mon-monasca-ci-59283f2/system/single-node/group_vars/all",
+                "hpcloud-mon-monasca-ci-59283f2/system/single-node/site.yml",
+                "hpcloud-mon-monasca-ci-59283f2/system/tests/",
+                "hpcloud-mon-monasca-ci-59283f2/system/tests/api_func.yml",
+                "hpcloud-mon-monasca-ci-59283f2/system/tests/smoke.yml",
+                "hpcloud-mon-monasca-ci-59283f2/system/tests/tests.yml",
+                "hpcloud-mon-monasca-ci-59283f2/system/uncompress_roles.sh",
+                "hpcloud-mon-monasca-ci-59283f2/tests/",
+                "hpcloud-mon-monasca-ci-59283f2/tests/api_func_check.py",
+                "hpcloud-mon-monasca-ci-59283f2/tests/api_func_check.yml.j2",
+                "hpcloud-mon-monasca-ci-59283f2/tests/smoke/",
+                "hpcloud-mon-monasca-ci-59283f2/tests/smoke/cli_wrapper.py",
+                "hpcloud-mon-monasca-ci-59283f2/tests/smoke/smoke.py",
+                "hpcloud-mon-monasca-ci-59283f2/tests/smoke/smoke2.py",
+                "hpcloud-mon-monasca-ci-59283f2/tests/smoke/smoke2_configs.py.j2",
+                "hpcloud-mon-monasca-ci-59283f2/tests/smoke/smoke_configs.py",
+                "hpcloud-mon-monasca-ci-59283f2/tests/smoke/utils.py"
+            ],
+            "warnings": [
+                "Consider using unarchive module rather than running tar"
+            ]
+        },
+        "use_systemd": false,
+        "vertica_dbadmin_password": "password",
+        "vertica_jdbc_location": "/vagrant/vertica_jdbc.jar",
+        "vertica_node": {
+            "changed": false,
+            "skipped": true
+        },
+        "vertica_package_location": "/vagrant/vertica.deb",
+        "vertica_ssh_key_location": "/vagrant",
+        "vertica_url": "jdbc:vertica://localhost:5433/mon",
+        "vertica_users": [
+            {
+                "password": "password",
+                "role": "monitor",
+                "username": "monitor"
+            },
+            {
+                "password": "password",
+                "role": "monasca_api",
+                "username": "mon_api"
+            },
+            {
+                "password": "password",
+                "role": "monasca_persister",
+                "username": "mon_persister"
+            }
+        ],
+        "zookeeper_hosts": "{{mini_mon}}:2181",
+        "zookeeper_service": {
+            "changed": false,
+            "skipped": true
+        }
+    }
+}
+
